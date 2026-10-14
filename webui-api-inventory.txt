@@ -1,0 +1,1316 @@
+
+### 41503/js/ussd.js
+526: saveAjaxData('api/sms/send-sms', submitData);
+571: saveAjaxData('api/ussd/send', ussdSend, function($xml) {
+718: getAjaxData('api/ussd/get', function($xml) {
+768: log.error('USSD:get api/ussd/get data error');
+777: log.error('USSD:get api/ussd/get file failed');
+784: getAjaxData('api/ussd/status', function($xml) {
+814: //release USSD dialog   (api/ussd/release)
+816: getAjaxData('api/ussd/release', function($xml) {
+840: getAjaxData("api/vsim/operateswitch-vsim", function($xml) {
+
+### 41601/js/main.js
+49: var G_NotificationsStatus = null;
+281: notificationsReady: false,
+333: var g_NotificationsOnlineUpdateStatus = -11111;
+530: api/monitoring/converged-status = api/pin/status + api/pin/simlock +
+531: api/language/current-language
+534: getAjaxData('api/monitoring/converged-status', function($xml) {
+627: getAjaxData('api/device/device-feature-switch', function($xml) {
+952: saveAjaxData('api/language/current-language', res, function($xml) {
+1857: getAjaxData('api/device/device-feature-switch', function($xml) {
+1891: getAjaxData('api/webserver/token', function($xml) {
+2015: getAjaxData('api/user/state-login', function($xml) {
+2054: getAjaxData("api/security/bridgemode", function($xml) {
+2190: getAjaxData('api/user/state-login', function($xml) {
+2251: getAjaxData('api/user/state-login', function($xml) {
+2337: getAjaxData('api/user/state-login', function($xml) {
+2363: getAjaxData('api/user/state-login', function($xml) {
+2406: getAjaxData('api/user/state-login', function($xml) {
+3049: // from getAjaxData.
+3053: function getAjaxData(urlstr, callback_func, options) {
+3091: log.error('MAIN : getAjaxData(' + myurl + ') error.');
+3100: log.debug('MAIN : getAjaxData(' + myurl + ') sucess.');
+3104: if((-1 != this.url.indexOf('/api/ussd/get') )&&( -1 != data.indexOf("content"))) {
+3135: getAjaxData(urlstr, callback_func, options);
+3261: getAjaxData('api/webserver/publickey', function($xml) {
+3311: // from getAjaxData.
+3315: function saveAjaxData(urlstr, xmlDate, callback_func, options) {
+3329: saveAjaxData(urlstr, xmlDate, callback_func, options);
+3369: saveAjaxData(urlstr, xmlDate, callback_func, options);
+3374: log.error('MAIN : saveAjaxData(' + myurl + ') error.');
+3384: log.debug('MAIN : saveAjaxData(' + myurl + ') success.');
+3388: if (-1 != this.url.indexOf('/api/sms/sms-list') && -1 != data.indexOf('Messages')) {
+3404: if(typeof xml_ret.error != 'undefined' && -1 == this.url.indexOf('/api/user/session')) {
+3416: saveAjaxData(urlstr, xmlDate, callback_func, options);
+3431: } else if(isAjaxReturnOK(xml_ret) && -1 != this.url.indexOf('/api/user/login')) {
+3461: log.error('MAIN: saveAjaxData can not get response token');
+3602: POST api/global/module-switch HTTP/1.1
+3615: getAjaxData('api/device/basic_information', function($xml) {
+3630: getAjaxData('api/device/information', function($xml) {
+3667: getAjaxData('api/user/hilink_login', function($xml) {
+3693: getAjaxData('api/global/module-switch', function($xml) {
+3743: getAjaxData('api/wlan/wifi-feature-switch', function($xml) {
+3755: getAjaxData('api/device/usb-tethering-switch', function($xml) {
+3773: getAjaxData('api/wlan/wifi-feature-switch', function($xml) {
+4096: getAjaxData("api/monitoring/status", function($xml) {
+4113: //First time of api/monitoring/status query was failing due to multiple quieries,, so added synchronous query
+4117: getAjaxData('api/monitoring/status', function($xml) {
+4128: getAjaxData('api/monitoring/check-notifications', function($xml) {
+4129: G_NotificationsStatus = null;
+4137: G_NotificationsStatus = ret.response;
+4138: showNotification();
+4139: DATA_READY.notificationsReady = true;
+4146: getAjaxData('api/monitoring/status', function($xml) {
+4157: getAjaxData('api/monitoring/check-notifications', function($xml) {
+4158: G_NotificationsStatus = null;
+4166: G_NotificationsStatus = ret.response;
+4167: showNotification();
+4168: DATA_READY.notificationsReady = true;
+4179: getAjaxData('api/monitoring/status', function($xml) {
+4190: getAjaxData('api/monitoring/check-notifications', function($xml) {
+4191: G_NotificationsStatus = null;
+4199: G_NotificationsStatus = ret.response;
+4200: showNotification();
+4201: DATA_READY.notificationsReady = true;
+4209: getAjaxData('api/wlan/station-information', function($xml) {
+4230: getAjaxData('api/cradle/status-info', function($xml) {
+4243: var strUrl = 'api/wlan/basic-settings';
+4245: strUrl = 'api/wlan/multi-security-settings';
+4249: getAjaxData(strUrl, function($xml) {
+4259: if ((g_module.cradle_enabled && false == DATA_READY.cradleReady)||(g_module.wifioffload_enable && false == DATA_READY.apStationReady) || false == DATA_READY.statusReady || false == DATA_READY.notificationsReady) {
+4265: DATA_READY.notificationsReady = false;
+4610: getAjaxData('api/monitoring/converged-status', function($xml) {
+4865: if(g_NotificationsOnlineUpdateStatus!=G_NotificationsStatus.OnlineUpdateStatus) {
+4866: g_NotificationsOnlineUpdateStatus = G_NotificationsStatus.OnlineUpdateStatus;
+4867: if (G_NotificationsStatus.OnlineUpdateStatus == MACRO_NEWVERSIONFOUND || G_NotificationsStatus.OnlineUpdateStatus == MACRO_READYTOUPDATE) {
+4892: getAjaxData('api/monitoring/traffic-statistics', function($xml) {
+4969: getAjaxData('api/wlan/station-information', function($xml) {
+5101: var unreadSmsSize = G_NotificationsStatus.UnreadMessage;
+5164: if (DATA_READY.statusReady && DATA_READY.notificationsReady) {
+5313: saveAjaxData('api/user/login', xmlstr, function($xml) {
+5314: log.debug('api/user/login successed!');
+5418: getAjaxData('api/user/remind', function($xml) {
+5435: saveAjaxData('api/user/remind', res, function($xml) {
+5572: saveAjaxData('api/user/logout', submitData, function($xml) {
+5590: getAjaxData('api/user/state-login', function($xml) {
+5610: function showNotification() {
+5612: if (G_NotificationsStatus != null) {
+5613: var unreadSmsSize = G_NotificationsStatus.UnreadMessage;
+5614: var smsStorageFull = G_NotificationsStatus.SmsStorageFull;
+6058: saveAjaxData('api/user/session', submitData, function($xml) {
+6077: getAjaxData('api/user/state-login', function($xml) {
+6097: saveAjaxData('api/user/session', submitData, function($xml) {
+6207: getAjaxData('api/pin/status', function($xml) {
+6264: getAjaxData('api/monitoring/status', function($xml) {
+7525: getAjaxData('api/device/information', function($xml) {
+
+### 41601/js/ussd.js
+524: saveAjaxData('api/sms/send-sms', submitData);
+569: saveAjaxData('api/ussd/send', ussdSend, function($xml) {
+717: getAjaxData('api/ussd/get', function($xml) {
+767: log.error('USSD:get api/ussd/get data error');
+776: log.error('USSD:get api/ussd/get file failed');
+783: getAjaxData('api/ussd/status', function($xml) {
+813: //release USSD dialog   (api/ussd/release)
+815: getAjaxData('api/ussd/release', function($xml) {
+839: getAjaxData("api/vsim/operateswitch-vsim", function($xml) {
+
+### 41820/js/ussd.js
+525: saveAjaxData('api/sms/send-sms', submitData);
+570: saveAjaxData('api/ussd/send', ussdSend, function($xml) {
+717: getAjaxData('api/ussd/get', function($xml) {
+767: log.error('USSD:get api/ussd/get data error');
+776: log.error('USSD:get api/ussd/get file failed');
+783: getAjaxData('api/ussd/status', function($xml) {
+813: //release USSD dialog   (api/ussd/release)
+815: getAjaxData('api/ussd/release', function($xml) {
+839: getAjaxData("api/vsim/operateswitch-vsim", function($xml) {
+
+### 41830/js/ussd.js
+525: saveAjaxData('api/sms/send-sms', submitData);
+570: saveAjaxData('api/ussd/send', ussdSend, function($xml) {
+717: getAjaxData('api/ussd/get', function($xml) {
+767: log.error('USSD:get api/ussd/get data error');
+776: log.error('USSD:get api/ussd/get file failed');
+783: getAjaxData('api/ussd/status', function($xml) {
+813: //release USSD dialog   (api/ussd/release)
+815: getAjaxData('api/ussd/release', function($xml) {
+839: getAjaxData("api/vsim/operateswitch-vsim", function($xml) {
+
+### 42004/js/ussd.js
+524: saveAjaxData('api/sms/send-sms', submitData);
+569: saveAjaxData('api/ussd/send', ussdSend, function($xml) {
+716: getAjaxData('api/ussd/get', function($xml) {
+766: log.error('USSD:get api/ussd/get data error');
+775: log.error('USSD:get api/ussd/get file failed');
+782: getAjaxData('api/ussd/status', function($xml) {
+812: //release USSD dialog   (api/ussd/release)
+814: getAjaxData('api/ussd/release', function($xml) {
+838: getAjaxData("api/vsim/operateswitch-vsim", function($xml) {
+
+### 42602/js/ussd.js
+525: saveAjaxData('api/sms/send-sms', submitData);
+570: saveAjaxData('api/ussd/send', ussdSend, function($xml) {
+717: getAjaxData('api/ussd/get', function($xml) {
+767: log.error('USSD:get api/ussd/get data error');
+776: log.error('USSD:get api/ussd/get file failed');
+783: getAjaxData('api/ussd/status', function($xml) {
+813: //release USSD dialog   (api/ussd/release)
+815: getAjaxData('api/ussd/release', function($xml) {
+839: getAjaxData("api/vsim/operateswitch-vsim", function($xml) {
+
+### 63401/js/ussd.js
+525: saveAjaxData('api/sms/send-sms', submitData);
+570: saveAjaxData('api/ussd/send', ussdSend, function($xml) {
+717: getAjaxData('api/ussd/get', function($xml) {
+767: log.error('USSD:get api/ussd/get data error');
+776: log.error('USSD:get api/ussd/get file failed');
+783: getAjaxData('api/ussd/status', function($xml) {
+813: //release USSD dialog   (api/ussd/release)
+815: getAjaxData('api/ussd/release', function($xml) {
+839: getAjaxData("api/vsim/operateswitch-vsim", function($xml) {
+
+### common/js/appmanagement.js.gz
+11: getAjaxData('api/language/current-language', function($xml) {
+
+### common/js/bluetooth.js.gz
+26: getAjaxData('api/bluetooth/settings', function($xml) {
+97: getAjaxData("api/bluetooth/settings", function($xml) {
+106: log.error("get api/bluetooth/settings data error");
+114: saveAjaxData('api/bluetooth/settings', handDover_xml, function($xml) {
+117: log.debug('api/bluetooth/settings ok');
+122: log.debug('api/bluetooth/settings error');
+173: saveAjaxData('api/bluetooth/scan', scan_xml, function($xml) {
+186: log.debug('post api/bluetooth/bluetoothscan data error');
+192: getAjaxData("api/bluetooth/scan", function($xml) {
+212: log.error("get api/bluetooth/bluetoothscan data error");
+218: getAjaxData("api/bluetooth/scan", function($xml) {
+238: log.error("get api/bluetooth/bluetoothscanresult datalists empty");
+247: log.error("get api/bluetooth/bluetoothscanresult data empty");
+256: log.error("get api/bluetooth/bluetoothscanresult data error");
+311: saveAjaxData('api/bluetooth/settings', current_device_xml, function($xml) {
+321: getAjaxData("api/bluetooth/settings", function($xml) {
+326: log.error("get api/bluetooth/settings data error");
+
+### common/js/bridgemode.js.gz
+49: getAjaxData("api/security/bridgemode", function($xml){
+75: saveAjaxData("api/security/bridgemode", xmlstr, function($xml){
+
+### common/js/cbssettings.js.gz
+23: getAjaxData('api/sms/get-cbschannellist', function($xml) {
+84: saveAjaxData('api/sms/operate-cbschannel', submitData, function($xml) {
+
+### common/js/chatmessagesetting.js.gz
+45: getAjaxData('api/sms/config', function($xml) {
+123: log.error('MESSAGESETTING: get api/sms/config data error');
+128: log.error('MESSAGESETTING: get api/sms/config file failed');
+176: saveAjaxData('api/sms/config', sms_setting_xml, function($xml) {
+184: log.error('MESSAGESETTING: post api/sms/cofig file failed');
+191: log.error('MESSAGESETTING: post api/sms/cofig file failed');
+
+### common/js/checklogin.js.gz
+5: var myurl = '../api/user/state-login';
+56: saveAjaxData('api/user/logout', logoutXml, function($xml) {
+
+### common/js/configuration.js.gz
+11: getAjaxData('api/dhcp/settings', function($xml) {
+88: saveAjaxData('api/device/control', cfg_backup_xml, function($xml) {
+
+### common/js/connectionless.js.gz
+22: getAjaxData('api/monitoring/status', function($xml) {
+95: getAjaxData('api/dialup/connection', function($xml) {
+130: saveAjaxData('api/dialup/dial', action_xml, function($xml) {
+
+### common/js/cradleDisconnected.js.gz
+6: getAjaxData('api/cradle/status-info', function($xml) {
+109: saveAjaxData('api/cradle/basic-info', xmlstr, function($xml) {
+110: log.debug('api/cradle/basic-info successed!');
+
+### common/js/ddns.js.gz
+60: getAjaxData('api/ddns/ddns-list', function($xml) {
+169: saveAjaxData('api/ddns/ddns-list', submitData, function($xml) {
+312: getAjaxData('api/ddns/status', function($xml) {
+
+### common/js/deviceinformation.js.gz
+13: getAjaxData('api/monitoring/status', function($xml) {
+21: getAjaxData('api/device/signal', function($xml) {
+30: getAjaxData('api/device/information', function($xml) {
+
+### common/js/dhcp.js.gz
+87: getAjaxData('api/dhcp/settings', function($xml) {
+130: saveAjaxData('api/dhcp/settings', xmlstr, function($xml) {
+
+### common/js/diagnosis.js.gz
+212: saveAjaxData('api/diagnosis/ping', PingXml, function($xml) {
+250: log.error(':api/diagnosis/ping failed');
+276: saveAjaxData('api/diagnosis/traceroute', TracerouteXml, function($xml) {
+298: getAjaxData('api/diagnosis/tracerouteresult', function($xml) {
+
+### common/js/dlna.js.gz
+39: getAjaxData('api/sdcard/sdcard', function($xml) {
+44: getAjaxData("api/sdcard/dlna-setting", function($xml) {
+71: saveAjaxData('api/sdcard/dlna-setting', xmlstr, function($xml){
+104: saveAjaxData('api/sdcard/sdfile', send_xml, function($xml) {
+
+### common/js/dmzsettings.js.gz
+3: /*global common_success,isAjaxReturnOK,saveAjaxData,object2xml,isButtonEnable,clearAllErrorLabel,firewall_label_dmz_ip_address_invalid,dialup_hint_ip_address_empty,showErrorUnderTextbox,$,button_enable,onRadioChange,getAjaxData,xml2object,isValidIpAddress,showErrorUnderTextbox,showInfoDialog*/
+16: getAjaxData('api/dhcp/settings', function($xml) {
+23: getAjaxData('api/security/dmz', function($xml) {
+85: saveAjaxData('api/security/dmz', xmlstr, function($xml) {
+
+### common/js/ethernetsettings.js.gz
+51: getAjaxData('api/dhcp/settings', function($xml) {
+394: saveAjaxData('api/cradle/basic-info', xmlconnData, function($xml) {
+406: log.error("CradleSettings:api/cradle/basic-info file failed");
+429: getAjaxData('api/cradle/basic-info', function($xml) {
+443: log.error("CradleInit:api/cradle/basic-info file failed");
+569: getAjaxData('api/cradle/feature-switch', function($xml) {
+
+### common/js/ethernetstatus.js.gz
+42: getAjaxData('api/cradle/status-info', function($xml) {
+126: log.error("REDIRECT:api/cradle/status-Info file failed");
+
+### common/js/firewallswitch.js.gz
+13: getAjaxData('api/security/firewall-switch', function($xml) {
+83: saveAjaxData('api/security/firewall-switch', xmlstr_security, function($xml) {
+
+### common/js/home.js.gz
+147: saveAjaxData('api/dialup/dial', dialup_xml, function($xml) {
+150: log.debug('api/dialup/dial ok');
+152: log.debug('api/dialup/dial error');
+447: getAjaxData("api/wlan/station-information", function($xml) {
+563: if (typeof(G_NotificationsStatus.OnlineUpdateStatus) == 'undefined' ||
+564: G_NotificationsStatus.OnlineUpdateStatus == null) {
+568: if (G_NotificationsStatus.OnlineUpdateStatus == '12' ||
+569: G_NotificationsStatus.OnlineUpdateStatus == '50') {
+581: if (G_NotificationsStatus != null) {
+582: var localUnRead = G_NotificationsStatus.UnreadMessage;
+583: var smsStorageFull = G_NotificationsStatus.SmsStorageFull;
+615: getAjaxData('api/net/current-plmn', function($xml) {
+697: getAjaxData('api/wlan/basic-settings', function($xml) {
+716: getAjaxData("api/security/bridgemode", function($xml) {
+782: getAjaxData('api/cradle/status-info', function($xml) {
+840: getAjaxData('api/monitoring/traffic-statistics', function($xml) {
+897: getAjaxData('api/dialup/mobile-dataswitch', function($xml) {
+909: getAjaxData('api/wlan/handover-setting', function($xml) {
+922: getAjaxData('api/user/state-login', function($xml) {
+955: saveAjaxData('api/dialup/mobile-dataswitch', dialup_xml, function($xml) {
+964: log.debug('api/dialup/mobile-dataswitch ok');
+966: log.debug('api/dialup/mobile-dataswitch error');
+979: saveAjaxData('api/device/control', xmlstr, function($xml) {
+982: log.debug('saveAjaxData successed!');
+1161: $('#notification_tray').click( function() {
+1162: if (!isButtonEnable('notification_tray')) {
+1171: getAjaxData('api/user/state-login', function($xml) {
+1209: getAjaxData('api/user/state-login', function($xml) {
+1253: getAjaxData('api/user/state-login', function($xml) {
+1285: getAjaxData('api/sms/get-cbsnewslist', function($xml) {
+1311: goto operator homepage according to /api/redirection/homepage
+1326: getAjaxData('api/device/autorun-version', function($xml) {
+1369: getAjaxData('api/monitoring/status', function($xml) {
+1390: getAjaxData('api/redirection/homepage', function($xml) {
+1487: saveAjaxData('api/host/info', str_xml);
+1504: $('#notification_tray').show();
+1512: $('#notification_tray').show();
+1517: $('#notification_tray').hide();
+1543: getAjaxData('api/dialup/connection', function($xml) {
+1579: getAjaxData("api/wlan/handover-setting", function($xml) {
+1590: log.error("WiFi network: get api/wlan/handover-setting data error");
+1593: getAjaxData('api/wlan/multi-switch-settings', function($xml) {
+1616: saveAjaxData('api/wlan/handover-setting', handDover_xml, function($xml) {
+1620: log.debug('api/wlan/handover-setting ok');
+1629: log.debug('api/wlan/handover-setting error');
+1652: getAjaxData("api/monitoring/status", function($xml) {
+1660: saveAjaxData('api/wlan/handover-setting', handDover_xml, function($xml) {
+1712: saveAjaxData('api/online-update/upgrade-messagebox', res, function($xml) {
+1724: getAjaxData('api/online-update/upgrade-messagebox', function($xml) {
+1737: if ( null == G_NotificationsStatus) {
+1740: if (MACRO_NEWVERSIONFOUND == G_NotificationsStatus.OnlineUpdateStatus || MACRO_READYTOUPDATE == G_NotificationsStatus.OnlineUpdateStatus) {
+1780: getAjaxData('api/user/state-login', function($xml) {
+
+### common/js/installsoftware.js.gz
+2: var g_notificationtry_items = {
+5: var g_notificationtray_is_windows = false;
+6: var g_notificationtray_is_mac = false;
+9: var g_notificationtray_pc_assistant_path = '';
+14: g_notificationtray_is_windows = (ua.indexOf('windows') != -1 || ua.indexOf('win32') != -1); //Window operate
+15: g_notificationtray_is_mac = (ua.indexOf('macintosh') != -1 || ua.indexOf('mac os x') != -1); //Mac operate
+19: getAjaxData('config/pcassistant/config.xml', function($xml) {
+26: if (g_notificationtray_is_mac)
+28: g_notificationtray_pc_assistant_path = assistant_ret.config.macpath;
+29: g_notificationtray_pc_assistant_path = g_notificationtray_pc_assistant_path.replace('&amp;','&');
+34: g_notificationtray_pc_assistant_path = assistant_ret.config.winpath;
+35: g_notificationtray_pc_assistant_path = g_notificationtray_pc_assistant_path.replace('&amp;','&');
+41: g_notificationtray_pc_assistant_path = '';
+53: $('#index_istall_tray').attr('src', g_notificationtray_pc_assistant_path);
+
+### common/js/lanipfilter.js.gz
+230: getAjaxData('api/security/firewall-switch', function($xml) {
+238: getAjaxData('api/dhcp/settings', function($xml) {
+245: getAjaxData('api/security/lan-ip-filter', function($xml) {
+416: getAjaxData('api/dhcp/settings', function($xml) {
+698: saveAjaxData('api/security/lan-ip-filter', submitData, function($xml) {
+
+### common/js/macclone.js.gz
+7: getAjaxData('api/cradle/mac-info', function($xml) {
+16: log.error("REDIRECT : Load api/cradle/mac-info file failed");
+80: getAjaxData('api/cradle/factory-mac', function($xml) {
+88: log.error("REDIRECT : Load api/cradle/factory-mac file failed");
+127: saveAjaxData('api/cradle/current-mac', xmlstr, function($xml) {
+
+### common/js/macfilter.js.gz
+13: getAjaxData('api/security/firewall-switch', function($xml) {
+22: getAjaxData('api/security/mac-filter', function($xml) {
+225: saveAjaxData('api/security/mac-filter', submitData, function($xml) {
+
+### common/js/main.js.gz
+49: var G_NotificationsStatus = null;
+281: notificationsReady: false,
+333: var g_NotificationsOnlineUpdateStatus = -11111;
+524: api/monitoring/converged-status = api/pin/status + api/pin/simlock +
+525: api/language/current-language
+528: getAjaxData('api/monitoring/converged-status', function($xml) {
+621: getAjaxData('api/device/device-feature-switch', function($xml) {
+946: saveAjaxData('api/language/current-language', res, function($xml) {
+1855: getAjaxData('api/device/device-feature-switch', function($xml) {
+1889: getAjaxData('api/webserver/token', function($xml) {
+2029: getAjaxData("api/security/bridgemode", function($xml) {
+2165: getAjaxData('api/user/state-login', function($xml) {
+2226: getAjaxData('api/user/state-login', function($xml) {
+2312: getAjaxData('api/user/state-login', function($xml) {
+2338: getAjaxData('api/user/state-login', function($xml) {
+2381: getAjaxData('api/user/state-login', function($xml) {
+3024: // from getAjaxData.
+3028: function getAjaxData(urlstr, callback_func, options) {
+3066: log.error('MAIN : getAjaxData(' + myurl + ') error.');
+3075: log.debug('MAIN : getAjaxData(' + myurl + ') sucess.');
+3079: if((-1 != this.url.indexOf('/api/ussd/get') )&&( -1 != data.indexOf("content"))) {
+3110: getAjaxData(urlstr, callback_func, options);
+3236: getAjaxData('api/webserver/publickey', function($xml) {
+3286: // from getAjaxData.
+3290: function saveAjaxData(urlstr, xmlDate, callback_func, options) {
+3304: saveAjaxData(urlstr, xmlDate, callback_func, options);
+3344: saveAjaxData(urlstr, xmlDate, callback_func, options);
+3349: log.error('MAIN : saveAjaxData(' + myurl + ') error.');
+3359: log.debug('MAIN : saveAjaxData(' + myurl + ') success.');
+3363: if (-1 != this.url.indexOf('/api/sms/sms-list') && -1 != data.indexOf('Messages')) {
+3379: if(typeof xml_ret.error != 'undefined' && -1 == this.url.indexOf('/api/user/session')) {
+3391: saveAjaxData(urlstr, xmlDate, callback_func, options);
+3406: } else if(isAjaxReturnOK(xml_ret) && -1 != this.url.indexOf('/api/user/login')) {
+3436: log.error('MAIN: saveAjaxData can not get response token');
+3577: POST api/global/module-switch HTTP/1.1
+3590: getAjaxData('api/device/basic_information', function($xml) {
+3605: getAjaxData('api/device/information', function($xml) {
+3642: getAjaxData('api/user/hilink_login', function($xml) {
+3668: getAjaxData('api/global/module-switch', function($xml) {
+3718: getAjaxData('api/wlan/wifi-feature-switch', function($xml) {
+3730: getAjaxData('api/device/usb-tethering-switch', function($xml) {
+3748: getAjaxData('api/wlan/wifi-feature-switch', function($xml) {
+4071: getAjaxData("api/monitoring/status", function($xml) {
+4088: //First time of api/monitoring/status query was failing due to multiple quieries,, so added synchronous query
+4092: getAjaxData('api/monitoring/status', function($xml) {
+4103: getAjaxData('api/monitoring/check-notifications', function($xml) {
+4104: G_NotificationsStatus = null;
+4112: G_NotificationsStatus = ret.response;
+4113: showNotification();
+4114: DATA_READY.notificationsReady = true;
+4121: getAjaxData('api/monitoring/status', function($xml) {
+4132: getAjaxData('api/monitoring/check-notifications', function($xml) {
+4133: G_NotificationsStatus = null;
+4141: G_NotificationsStatus = ret.response;
+4142: showNotification();
+4143: DATA_READY.notificationsReady = true;
+4154: getAjaxData('api/monitoring/status', function($xml) {
+4165: getAjaxData('api/monitoring/check-notifications', function($xml) {
+4166: G_NotificationsStatus = null;
+4174: G_NotificationsStatus = ret.response;
+4175: showNotification();
+4176: DATA_READY.notificationsReady = true;
+4184: getAjaxData('api/wlan/station-information', function($xml) {
+4205: getAjaxData('api/cradle/status-info', function($xml) {
+4218: var strUrl = 'api/wlan/basic-settings';
+4220: strUrl = 'api/wlan/multi-security-settings';
+4224: getAjaxData(strUrl, function($xml) {
+4234: if ((g_module.cradle_enabled && false == DATA_READY.cradleReady)||(g_module.wifioffload_enable && false == DATA_READY.apStationReady) || false == DATA_READY.statusReady || false == DATA_READY.notificationsReady) {
+4240: DATA_READY.notificationsReady = false;
+4585: getAjaxData('api/monitoring/converged-status', function($xml) {
+4840: if(g_NotificationsOnlineUpdateStatus!=G_NotificationsStatus.OnlineUpdateStatus) {
+4841: g_NotificationsOnlineUpdateStatus = G_NotificationsStatus.OnlineUpdateStatus;
+4842: if (G_NotificationsStatus.OnlineUpdateStatus == MACRO_NEWVERSIONFOUND || G_NotificationsStatus.OnlineUpdateStatus == MACRO_READYTOUPDATE) {
+4867: getAjaxData('api/monitoring/traffic-statistics', function($xml) {
+4944: getAjaxData('api/wlan/station-information', function($xml) {
+5076: var unreadSmsSize = G_NotificationsStatus.UnreadMessage;
+5139: if (DATA_READY.statusReady && DATA_READY.notificationsReady) {
+5288: saveAjaxData('api/user/login', xmlstr, function($xml) {
+5289: log.debug('api/user/login successed!');
+5389: getAjaxData('api/user/remind', function($xml) {
+5406: saveAjaxData('api/user/remind', res, function($xml) {
+5543: saveAjaxData('api/user/logout', submitData, function($xml) {
+5561: getAjaxData('api/user/state-login', function($xml) {
+5581: function showNotification() {
+5583: if (G_NotificationsStatus != null) {
+5584: var unreadSmsSize = G_NotificationsStatus.UnreadMessage;
+5585: var smsStorageFull = G_NotificationsStatus.SmsStorageFull;
+6029: saveAjaxData('api/user/session', submitData, function($xml) {
+6048: getAjaxData('api/user/state-login', function($xml) {
+6068: saveAjaxData('api/user/session', submitData, function($xml) {
+6178: getAjaxData('api/pin/status', function($xml) {
+6235: getAjaxData('api/monitoring/status', function($xml) {
+
+### common/js/messagesetting.js.gz
+45: getAjaxData('api/sms/config', function($xml) {
+123: log.error('MESSAGESETTING: get api/sms/config data error');
+128: log.error('MESSAGESETTING: get api/sms/config file failed');
+176: saveAjaxData('api/sms/config', sms_setting_xml, function($xml) {
+184: log.error('MESSAGESETTING: post api/sms/cofig file failed');
+191: log.error('MESSAGESETTING: post api/sms/cofig file failed');
+
+### common/js/mobileconnection.js.gz
+62: getAjaxData('api/dialup/mobile-dataswitch', function($xml) {
+79: getAjaxData('api/dialup/dialup-feature-switch', function($xml) {
+124: getAjaxData('api/dialup/connection', function($xml) {
+147: getAjaxData('api/global/module-switch', function($xml) {
+184: saveAjaxData('api/dialup/mobile-dataswitch', newXmlString, function($xml) {
+210: saveAjaxData('api/wlan/handover-setting', newXmlSetString, function($xml) {
+218: saveAjaxData('api/dialup/connection', newXmlString, function($xml) {
+
+### common/js/mobilenetworksettings.js.gz
+195: getAjaxData('api/net/net-mode', function($xml) {
+231: log.error('MOBILENETWORKSETTING: get api/net/net-mode data error');
+235: log.error('MOBILENETWORKSETTING:get api/net/net-mode file failed');
+247: getAjaxData('api/net/network', function($xml) {
+281: log.error('MOBILENETWORKSETTING: get api/net/network data error');
+285: log.error('MOBILENETWORKSETTING:get api/net/network file failed');
+293: getAjaxData('api/device/information', function($xml) {
+300: log.error('MOBILENETWORKSETTING:get api/device/infomation data error');
+304: log.error('MOBILENETWORKSETTING: get api/device/infomation file failed');
+310: getAjaxData('api/net/register', function($xml) {
+320: log.error('MOBILENETWORKSETTING:get api/net/register data error');
+324: log.error('MOBILENETWORKSETTING:get api/net/register file failed');
+366: getAjaxData('api/net/net-mode-list', function($xml) {
+383: log.error('MOBILENETWORKSETTING:get api/net/net-mode data error');
+391: getAjaxData('api/net/net-mode', function($xml) {
+401: log.error('MOBILENETWORKSETTING:get api/net/net-mode data error');
+407: log.error('MOBILENETWORKSETTING:get api/net/net-mode file failed');
+468: api_post = 'api/net/net-mode';
+470: api_post = 'api/net/network';
+482: saveAjaxData(api_post, xmlstr, function($xml) {
+501: log.error('MOBILENETWORKSETTING:post api/net/network data error');
+509: log.error('MOBILENETWORKSETTING:post api/net/network filet filed');
+603: saveAjaxData('api/net/register', xmlstr, function($xml) {
+624: log.error('MOBILENETWORKSETTING:post api/net/register file failed');
+630: getAjaxData('api/net/plmn-list', function($xml) {
+646: log.error('MOBILENETWORKSETTING:get api/net/plmn-list data error');
+656: log.error('MOBILENETWORKSETTING:get api/net/plmn-list file failed');
+696: saveAjaxData('api/net/register', xmlstr, function($xml) {
+727: log.error('MOBILENETWORKSETTING:post api/net/register not return OK');
+739: log.error('MOBILENETWORKSETTING:post api/net/register file failed');
+741: });//saveAjaxData end
+745: getAjaxData('api/net/current-plmn', function($xml) {
+754: log.error('MOBILENETWORKSETTING:get api/net/current-plmn data error');
+758: log.error('MOBILENETWORKSETTING:get api/net/current-plmn file failed');
+908: getAjaxData('api/net/current-plmn', function($xml) {
+1000: getAjaxData("api/vsim/operateswitch-vsim", function($xml) {
+1054: getAjaxData("api/monitoring/status", function($xml) {
+1077: getAjaxData('api/net/net-feature-switch', function($xml) {
+1145: getAjaxData('api/net/net-mode', function($xml) {
+
+### common/js/modifypassword.js.gz
+118: saveAjaxData('api/user/password', xmlstr, function($xml) {
+171: getAjaxData('api/user/remind', function($xml) {
+188: getAjaxData("api/user/password", function($xml) {
+198: getAjaxData('api/user/hilink_login', function($xml) {
+228: saveAjaxData('api/user/hilink_login', res, function($xml) {
+
+### common/js/nat.js.gz
+23: getAjaxData("api/security/nat", function($xml){
+71: saveAjaxData("api/security/nat", xmlstr, function($xml){
+
+### common/js/nocard.js.gz
+4: getAjaxData('api/pin/status', function($xml) {
+
+### common/js/phonebook.js.gz
+459: saveAjaxData('api/pb/pb-import-length', submitData, function($xml) {
+464: log.error('PB: post api/pb/pb-import-length data error');
+469: log.error('PB: post api/pb/pb-import-length file failed');
+603: getAjaxData('api/pb/pb-count', function($xml) {
+613: log.error('PB: get api/pb/pb-count data error');
+621: log.error('PB: get api/pb/pb-count file failed');
+633: saveAjaxData('api/pb/group-list', submitData, function($xml) {
+649: log.error('PB: post api/pb/group-list data error');
+660: log.error('PB: post api/pb/group-list file failed');
+683: saveAjaxData('api/pb/pb-list', submitData, function($xml) {
+696: log.error('PB: post api/pb/pb-list file failed');
+702: log.error('PB: post api/pb/pb-list data error');
+708: log.error('PB: post api/pb/pb-list file failed');
+733: saveAjaxData('api/pb/pb-new', submitData, function($xml) {
+743: log.error('PB: post api/pb/pb-new data error');
+751: log.error('PB: post api/pb/pb-new file failed');
+778: saveAjaxData('api/pb/pb-update', submitData, function($xml) {
+797: log.error('PB: post api/pb/pb-update data error');
+804: log.error('PB: post api/pb/pb-update file failed');
+829: saveAjaxData('api/pb/pb-delete', submitData, function($xml) {
+843: log.error('PB: post api/pb/pb-delete file failed');
+925: saveAjaxData('api/pb/pb-copySIM', submitData, function($xml) {
+989: saveAjaxData('api/pb/pb-export', submitData, function($xml) {
+1030: saveAjaxData('api/pb/pb-import', submitData, function($xml) {
+1053: log.error('PB: post api/pb/pb_import File failed');
+1070: saveAjaxData('api/pb/pb-import-match', submitData, function($xml) {
+1078: log.error('PB: post api/pb/pb-import-match data error');
+1084: log.error('PB: post api/pb/pb-import-match file failed');
+1166: getAjaxData('api/pb/pb-import-field', function($xml) {
+1193: log.error('PB: get api/pb/pb-import-field data error');
+1202: log.error('PB: get api/pb/pb-import-field file failed');
+1213: url: '../api/filemanager/upload',
+1267: saveAjaxData('api/pb/group-new', submitData, function($xml) {
+1277: log.error('PB: post api/pb/group-new data error');
+1285: log.error('PB: post api/pb/group-new file failed');
+1330: saveAjaxData('api/pb/group-update', submitData, function($xml) {
+1337: log.error('PB: post api/pb/group-delete data error');
+1344: log.error('PB: post api/pb/group-delete file failed');
+1359: saveAjaxData('api/pb/group-delete', submitData, function($xml) {
+1368: log.error('PB: post api/pb/group-delete data error');
+1374: log.error('PB: post api/pb/group-delete file failed');
+1395: saveAjaxData('api/pb/pb-move', submitData, function($xml) {
+
+### common/js/pinautovalidate.js.gz
+72: getAjaxData('api/pin/status', function($xml) {
+91: getAjaxData('api/pin/save-pin', function($xml) {
+128: saveAjaxData('api/pin/save-pin', xmlstr, function($xml) {
+
+### common/js/pincodemanagement.js.gz
+223: getAjaxData('api/pin/status', function($xml) {
+342: getAjaxData('api/pin/status', function($xml) {
+418: saveAjaxData('api/pin/operate', requestStr, function($xml) {
+526: getAjaxData("api/vsim/operateswitch-vsim", function($xml) {
+
+### common/js/pincoderequired.js.gz
+28: getAjaxData('api/pin/status', function($xml) {
+54: getAjaxData('api/pin/save-pin', function($xml) {
+59: getAjaxData('api/device/basic_information', function($xml) {
+109: saveAjaxData('api/pin/operate', validate_xml, function($xml) {
+115: saveAjaxData('api/pin/save-pin', savepin_xml, function($xml) {
+171: getAjaxData('api/pin/status', function($xml) {
+
+### common/js/profilesmgr.js.gz
+132: saveAjaxData('api/dialup/profiles', delProfile, function($xml) {
+241: getAjaxData('api/dialup/profiles', function($xml) {
+308: saveAjaxData('api/dialup/profiles', profile_xml, function($xml) {
+599: getAjaxData('api/dialup/auto-apn', function($xml) {
+648: saveAjaxData('api/dialup/auto-apn', xmlstr, function($xml) {
+663: getAjaxData('api/dialup/dialup-feature-switch', function($xml) {
+671: getAjaxData('api/dialup/connection', function($xml) {
+
+### common/js/pukrequired.js.gz
+32: getAjaxData('api/pin/status', function($xml) {
+149: saveAjaxData('api/pin/operate', unlockpuk_xml, function($xml) {
+
+### common/js/quicksetup.js.gz
+236: getAjaxData('api/dialup/profiles', function($xml) {
+364: getAjaxData('api/wlan/security-settings', function($xml) {
+394: getAjaxData('api/wlan/basic-settings', function($xml) {
+419: getAjaxData('api/wlan/multi-security-settings', function($xml) {
+423: getAjaxData('api/wlan/multi-basic-settings', function($xml) {
+465: getAjaxData('api/wlan/multi-switch-settings', function($xml) {
+592: getAjaxData('api/wlan/wifi-feature-switch', function($xml) {
+607: getAjaxData("api/wlan/multi-security-settings-ex", function($xml) {
+822: getAjaxData("api/wlan/handover-setting", function($xml) {
+890: getAjaxData('api/cradle/basic-info', function($xml) {
+902: log.error("CradleInit:api/cradle/basic-info file failed");
+1331: getAjaxData('api/dhcp/settings', function($xml) {
+1709: saveAjaxData('api/wlan/basic-settings', xmlstr_settings, function($xml) {
+1715: saveAjaxData('api/wlan/security-settings', xmlstr_security, function($xml) {
+1805: saveAjaxData('api/wlan/multi-basic-settings', xmlStr_set, function($xml) {
+1822: saveAjaxData('api/wlan/multi-switch-settings', xmlStr, function($xml) {
+1826: log.info("api/wlan/multi-switch-settings  response OK");
+1898: saveAjaxData('api/cradle/basic-info', xmlethernetData, function($xml) {
+1903: log.error("CradleSettings:api/cradle/basic-info file failed");
+1922: saveAjaxData('api/dialup/profiles', xmlstr_profiles, function($xml) {
+1965: getAjaxData('api/cradle/basic-info', function($xml) {
+2132: getAjaxData('api/dialup/dialup-feature-switch', function($xml) {
+2143: getAjaxData("api/device/basic_information", function($xml) {
+2152: saveAjaxData('api/device/basic_information', xmlstr_info, function($xml) {
+2236: getAjaxData('api/cradle/feature-switch', function($xml) {
+2455: saveAjaxData('api/dialup/profiles', profile_xml, function($xml) {
+2559: getAjaxData('api/dialup/dialup-feature-switch', function($xml) {
+2567: getAjaxData('api/dialup/connection', function($xml) {
+
+### common/js/reboot.js.gz
+20: getAjaxData('api/dhcp/settings', function($xml) {
+31: saveAjaxData('api/device/control', xmlstr, function($xml) {
+32: log.debug('saveAjaxData successed!');
+50: /*After send "api/device/control" cmd, server will't response webui request.
+
+### common/js/redirect.js.gz
+51: getAjaxData("config/global/config.xml", function($xml) {
+64: getAjaxData('api/global/module-switch', function($xml) {
+82: getAjaxData('api/cradle/status-info',function($xml){
+113: getAjaxData("api/pin/status", function($xml) {
+160: log.error("REDIRECT : Load api/pin/status file failed");
+171: getAjaxData("api/pin/simlock", function($xml) {
+187: log.error("REDIRECT : get api/pin/simlock failed");
+204: getAjaxData("api/ota/status", function($xml) {
+213: log.error("REDIRECT : api/ota/status failed");
+
+### common/js/restore.js.gz
+32: saveAjaxData('api/device/control', xmlstr, function($xml) {
+33: log.debug('saveAjaxData successed!');
+52: /*After send "api/device/control" cmd, server will't response webui request.
+
+### common/js/sambasettings.js.gz
+7: getAjaxData('api/sdcard/sdcard', function($xml) {
+14: getAjaxData('api/sdcard/sdcardsamba', function($xml) {
+26: saveAjaxData('api/sdcard/sdcardsamba', xmlstr_samba, function($xml) {
+57: getAjaxData('api/sdcard/printerlist', function($xml) {
+
+### common/js/sdcard.js.gz
+5: dialogContent += "<form name='tF0' id='upload_file_form' method='post' action='/api/sdcard/fileupload' enctype='multipart/form-data' encoding='multipart/form-data' target='iframe_upload_file'>";
+104: saveAjaxData('api/user/logout', logoutXml, function($xml) {
+110: getAjaxData('api/user/state-login', function($xml) {
+205: saveAjaxData('api/sdcard/sdfile', path_xml, function($xml) {
+486: getAjaxData('api/sdcard/sdcard', function($xml) {
+561: getAjaxData('api/sdcard/sdcapacity', function($xml) {
+609: saveAjaxData('api/sdcard/sdcard', upload_xml, function($xml) {
+637: getAjaxData('api/sdcard/getpath', function($xml) {
+647: saveAjaxData('api/sdcard/createdir', new_folder_xml, function($xml) {
+673: saveAjaxData('api/sdcard/deletefile', delete_xml, function($xml) {
+711: saveAjaxData('api/sdcard/sdfile', send_xml, function($xml) {
+991: saveAjaxData('api/host/info', str_xml);
+
+### common/js/sdupload.js.gz
+125: getAjaxData('api/sdcard/sdfilestate', function($xml) {
+201: getAjaxData("api/sdcard/Check_file_exist");
+208: saveAjaxData('api/sdcard/Check_file_exist', upload_xml, function($xml) {
+221: getAjaxData("api/sdcard/Check_file_exist");
+265: getAjaxData('api/sdcard/uploadflag', function($xml) {
+
+### common/js/serverbasic.js.gz
+83: saveAjaxData('api/voice/sipserver', newXmlString, function($xml) {
+100: getAjaxData('api/voice/sipserver', function($xml) {
+
+### common/js/simlockrequired.js.gz
+28: getAjaxData('api/pin/simlock', function($xml) {
+87: saveAjaxData('api/pin/verify-simlock', wps_xml, function($xml) {
+
+### common/js/sipalgsettings.js.gz
+2: /*global firewall_hint_port_number_valid_char,firewall_hint_port_empty,common_success,isAjaxReturnOK,saveAjaxData,object2xml,isButtonEnable,clearAllErrorLabel,firewall_label_dmz_ip_address_invalid,dialup_hint_ip_address_empty,showErrorUnderTextbox,$,button_enable,onRadioChange,getAjaxData,xml2object,isValidIpAddress,showErrorUnderTextbox,showInfoDialog*/
+15: getAjaxData('api/security/sip', function($xml) {
+54: saveAjaxData('api/security/sip', xmlstr_sip, function($xml) {
+
+### common/js/sipbasic.js.gz
+7: var DELETE_SIPACCOUNT = 'api/voice/deletesipaccount';
+8: var GET_SIPACCOUNT = 'api/voice/sipaccount';
+9: var ADD_SIPACCOUNT = 'api/voice/addsipaccount';
+36: getAjaxData('api/voice/featureswitch', function($xml) {
+47: getAjaxData('api/voice/sipadvance', function($xml) {
+62: getAjaxData('api/voice/sipaccount', function($xml) {
+168: saveAjaxData('api/voice/sipadvance', newXmlString, function($xml) {
+240: saveAjaxData(temp, submitData, function($xml) {
+365: getAjaxData('api/voice/sipserver', function($xml) {
+
+### common/js/sms.js.gz
+247: getAjaxData("api/sms/sms-count", function($xml) {
+253: log.error("SMS: get api/sms/sms-count data error");
+297: log.error("SMS: get api/sms/sms-count file failed");
+349: saveAjaxData('api/sms/sms-list',msgCondition, function($xml) {
+363: log.error("SMS: get api/sms/sms-list data error");
+367: log.error("SMS: get api/sms/sms-list data error");
+376: log.error("SMS: get api/sms/sms-list file failed");
+514: saveAjaxData("api/pb/pb-match", postData, function($xml) {
+664: saveAjaxData("api/sms/delete-sms",xmlstr, function($xml) {
+704: saveAjaxData("api/sms/backup-sim",xmlstr, function($xml) {
+934: saveAjaxData("api/sms/set-read", submitData, function($xml) {
+1807: getAjaxData("api/sms/splitinfo-sms", function($xml) {
+1846: getAjaxData('api/sms/sms-feature-switch', function($xml) {
+1859: getAjaxData("api/vsim/operateswitch-vsim", function($xml) {
+2123: saveAjaxData("api/sms/save-sms", submitData, function($xml) {
+2148: saveAjaxData("api/sms/send-sms", submitData, function($xml) {
+2162: getAjaxData("api/sms/send-status", function($xml) {
+2202: saveAjaxData("api/pb/pb-match", postData, function($xml) {
+2221: saveAjaxData("api/pb/pb-match", postData, function($xml) {
+2273: saveAjaxData("api/sms/cancel-send", submitData, function($xml) {
+2418: saveAjaxData("api/sms/delete-sms", submitData, function($xml) {
+2658: saveAjaxData('api/pb/pb-list', submitData, function($xml) {
+2670: log.error('PB: post api/pb/pb-list file failed');
+2676: log.error('PB: post api/pb/pb-list data error');
+2682: log.error('PB: post api/pb/pb-list file failed');
+
+### common/js/smsandroid.js.gz
+180: saveAjaxData('api/sms/sms-list-phone',msgCondition, function($xml) {
+203: log.error("SMS: get api/sms/sms-list-phone data error");
+206: log.error("SMS: get api/sms/sms-list-phone data error");
+214: log.error("SMS: get api/sms/sms-list-phone file failed");
+225: saveAjaxData("api/sms/delete-sms",xmlstr, function($xml) {
+330: getAjaxData("api/sms/sms-count", function($xml) {
+336: log.error("SMS: get api/sms/sms-count data error");
+360: log.error("SMS: get api/sms/sms-count file failed");
+374: saveAjaxData('api/sms/sms-count-contact',msgCondition, function($xml) {
+382: log.error("SMS: get api/sms/sms-count-contact file failed");
+389: getAjaxData("api/sms/sms-count-contact", function($xml) {
+398: log.error("SMS: get api/sms/sms-count-contact  failed");
+443: saveAjaxData('api/sms/sms-list-contact',msgCondition, function($xml) {
+455: log.error("SMS: get api/sms/sms-list-contact data error");
+458: log.error("SMS: get api/sms/sms-list-contact data error");
+462: log.error("SMS: get api/sms/sms-list-contact file failed");
+615: saveAjaxData("api/pb/pb-match", postData, function($xml) {
+838: saveAjaxData("api/sms/sms-delete-phone",xmlstr, function($xml) {
+878: saveAjaxData("api/sms/backup-sim",xmlstr, function($xml) {
+1106: saveAjaxData("api/sms/set-read", submitData, function($xml) {
+1851: getAjaxData("api/sms/splitinfo-sms", function($xml) {
+1892: getAjaxData('api/sms/sms-feature-switch', function($xml) {
+2054: saveAjaxData("api/sms/save-sms", submitData, function($xml) {
+2131: saveAjaxData("api/sms/save-sms", submitData, function($xml) {
+2154: saveAjaxData("api/sms/send-sms", submitData, function($xml) {
+2168: getAjaxData("api/sms/send-status", function($xml) {
+2208: saveAjaxData("api/pb/pb-match", postData, function($xml) {
+2227: saveAjaxData("api/pb/pb-match", postData, function($xml) {
+2274: saveAjaxData("api/sms/cancel-send", submitData, function($xml) {
+2462: saveAjaxData('api/sms/sms-list-phone',msgCondition, function($xml) {
+2483: log.error("SMS: get api/sms/sms-list-phone data error");
+2486: log.error("SMS: get api/sms/sms-list-phone data error");
+2490: log.error("SMS: get api/sms/sms-list-phone file failed");
+2639: saveAjaxData("api/sms/set-read", submitData, function($xml) {
+2843: saveAjaxData('api/pb/pb-list', submitData, function($xml) {
+2855: log.error('PB: post api/pb/pb-list file failed');
+2860: log.error('PB: post api/pb/pb-list data error');
+2865: log.error('PB: post api/pb/pb-list file failed');
+
+### common/js/sntp.js.gz
+23: getAjaxData("api/sntp/sntpswitch", function($xml){
+74: saveAjaxData("api/sntp/sntpswitch", xmlstr, function($xml){
+
+### common/js/specialapplication.js.gz
+28: getAjaxData('api/security/special-applications', function($xml) {
+389: saveAjaxData('api/security/special-applications', submitData, function($xml) {
+
+### common/js/speeddial.js.gz
+68: getAjaxData('api/voice/speeddial', function($xml) {
+127: saveAjaxData('api/voice/speeddial', submitData, function($xml) {
+
+### common/js/stationwps.js.gz
+13: getAjaxData('api/wlan/handover-setting', function($xml) {
+39: getAjaxData('api/wlan/wps-pbc', function($xml) {
+68: saveAjaxData('api/wlan/wps-pbc', pbc_xml, function($xml) {
+
+### common/js/statistic.js.gz
+261: getAjaxData('api/monitoring/traffic-statistics', function($xml) {
+277: getAjaxData('api/wlan/station-information', function($xml) {
+287: getAjaxData('api/wlan/wifi-feature-switch', function($xml) {
+304: getAjaxData('api/wlan/basic-settings', function($xml) {
+321: getAjaxData('api/wlan/multi-basic-settings', function($xml) {
+341: getAjaxData('api/wlan/host-list', function($xml) {
+422: getAjaxData('api/monitoring/start_date', function($xml) {
+465: getAjaxData('api/monitoring/start_date_wlan', function($xml) {
+576: saveAjaxData('api/monitoring/clear-traffic', xmlstr, function($xml) {
+844: //getAjaxData  get  mobile info
+847: getAjaxData('api/monitoring/month_statistics', function($xml) {
+861: //getAjaxData  get  wifi info
+864: getAjaxData('api/monitoring/month_statistics_wlan', function($xml) {
+903: //saveAjaxData set moblie info
+922: saveAjaxData('api/monitoring/start_date', action_xml, function($xml) {
+935: //saveAjaxData set wlan info
+955: saveAjaxData('api/monitoring/start_date_wlan', action_xml, function($xml) {
+974: getAjaxData('api/wlan/multi-macfilter-settings', function($xml) {
+983: getAjaxData('api/wlan/multi-basic-settings', function($xml) {
+992: getAjaxData('api/wlan/mac-filter', function($xml) {
+1072: sendCmd = 'api/wlan/multi-macfilter-settings';
+1079: sendCmd = 'api/wlan/multi-basic-settings';
+1087: sendCmd = 'api/wlan/mac-filter';
+1092: saveAjaxData(sendCmd, newXmlString, function($xml) {
+1126: sendCmd = 'api/wlan/multi-macfilter-settings';
+1133: sendCmd = 'api/wlan/multi-basic-settings';
+1141: sendCmd = 'api/wlan/mac-filter';
+1146: saveAjaxData(sendCmd, newXmlString, function($xml) {
+1163: getAjaxData('api/wlan/wifi-feature-switch', function($xml) {
+
+### common/js/stk.js.gz
+585: saveAjaxData('api/stk/stk-get-main', submitData, function($xml) {
+604: log.error('STK: post api/stk/stk-get-sub file failed');
+612: log.error('STK: post api/stk/stk-get-main data error');
+621: log.error('STK: post api/stk/stk-get-main file failed');
+635: saveAjaxData('api/stk/stk-get-sub', submitData, function($xml) {
+655: log.error('STK: post api/stk/stk-get-sub file failed');
+663: log.error('STK: post api/stk/stk-get-sub data error');
+673: log.error('STK: post api/stk/stk-get-sub file failed');
+1532: getAjaxData('api/stk/stk-query', function($xml) {
+1545: log.error('STK: api/stk/stk-query data error');
+1551: log.error('STK: get api/stk/stk-query file failed');
+
+### common/js/systemsettings.js.gz
+9: getAjaxData('api/device/powersaveswitch', function($xml) {
+24: getAjaxData('api/device/fastbootswitch', function($xml) {
+38: getAjaxData('api/sntp/sntpswitch', function($xml) {
+51: getAjaxData('api/device/usb-tethering', function($xml) {
+69: saveAjaxData('api/device/powersaveswitch', xmlstr, function($xml) {
+86: saveAjaxData('api/device/fastbootswitch', xmlstr_fastboot, function($xml) {
+103: saveAjaxData('api/sntp/sntpswitch', xmlstr_sntp, function($xml) {
+120: saveAjaxData('api/device/usb-tethering', xmlstr_usb, function($xml) {
+
+### common/js/update.js.gz
+166: getAjaxData('api/online-update/url-list', function($xml) {
+246: getAjaxData('api/online-update/status', function($xml) {
+359: saveAjaxData('api/online-update/check-new-version', '', function($xml) {
+369: var updateStatus = parseInt(G_NotificationsStatus.OnlineUpdateStatus, 10);
+377: saveAjaxData('api/online-update/ack-newversion', res, function($xml) {
+404: saveAjaxData('api/online-update/cancel-downloading', '', function($xml) {
+412: saveAjaxData('api/online-update/check-new-version', '', function($xml) {
+456: getAjaxData('api/monitoring/status', function($xml) {
+467: getAjaxData('api/cradle/status-info', function($xml) {
+493: getAjaxData('api/device/information', function($xml) {
+532: getAjaxData('api/device/device-feature-switch', function($xml) {
+
+### common/js/update_autorun.js.gz
+18: getAjaxData('api/dhcp/settings', function($xml) {
+33: getAjaxData('config/pcassistant/updateautorun.xml', function($xml) {
+
+### common/js/update_local.js.gz
+28: url: '../api/filemanager/upload',
+49: getAjaxData('api/user/state-login', function($xml) {
+62: getAjaxData('api/monitoring/check-notifications', function($xml) {
+65: G_NotificationsStatus = localUpdate_ret.response;
+66: g_updateStatus = parseInt(G_NotificationsStatus.OnlineUpdateStatus, 10);
+109: getAjaxData('api/device/device-feature-switch', function($xml) {
+138: getAjaxData("api/monitoring/status", function($xml) {
+151: if (G_NotificationsStatus.OnlineUpdateStatus == UPDATE_DOWNLOAD_PROGRESSING || G_NotificationsStatus.OnlineUpdateStatus == UPDATE_PROGRESSING) {
+
+### common/js/upnp.js.gz
+4: /*global log,firewall_hint_port_number_valid_char,firewall_hint_port_empty,common_success,isAjaxReturnOK,saveAjaxData,object2xml,isButtonEnable,clearAllErrorLabel,firewall_label_dmz_ip_address_invalid,dialup_hint_ip_address_empty,showErrorUnderTextbox,$,button_enable,onRadioChange,getAjaxData,xml2object,isValidIpAddress,showErrorUnderTextbox,showInfoDialog*/
+9: getAjaxData("api/security/upnp", function($xml) {
+54: saveAjaxData("api/security/upnp", xmlstr, function($xml) {
+
+### common/js/urlfilter.js.gz
+109: getAjaxData('api/security/firewall-switch', function($xml) {
+130: getAjaxData('api/security/url-filter', function($xml) {
+297: saveAjaxData('api/security/url-filter', submitData, function($xml) {
+
+### common/js/usermanagement.js.gz
+129: getAjaxData('api/sdcard/share-account', function($xml) {
+163: saveAjaxData('api/sdcard/sdfile', send_xml, function($xml) {
+538: saveAjaxData('api/sdcard/share-account', submitData, function($xml) {
+
+### common/js/ussd.js.gz
+526: saveAjaxData('api/sms/send-sms', submitData);
+571: saveAjaxData('api/ussd/send', ussdSend, function($xml) {
+718: getAjaxData('api/ussd/get', function($xml) {
+768: log.error('USSD:get api/ussd/get data error');
+777: log.error('USSD:get api/ussd/get file failed');
+784: getAjaxData('api/ussd/status', function($xml) {
+814: //release USSD dialog   (api/ussd/release)
+816: getAjaxData('api/ussd/release', function($xml) {
+840: getAjaxData("api/vsim/operateswitch-vsim", function($xml) {
+
+### common/js/virtualserver.js.gz
+96: getAjaxData('api/dhcp/settings', function($xml) {
+103: getAjaxData('api/security/virtual-servers', function($xml) {
+312: saveAjaxData('api/security/virtual-servers', submitData, function($xml) {
+
+### common/js/vpnsettings.js.gz
+57: saveAjaxData('api/vpn/l2tp_settings', newXmlString, function($xml) {
+101: getAjaxData('api/vpn/l2tp_settings', function($xml) {
+
+### common/js/vpnstatus.js.gz
+21: getAjaxData('api/vpn/status', function($xml) {
+79: log.error("REDIRECT:api/vpn/status file failed");
+
+### common/js/vsim.js.gz
+33: getAjaxData('api/dialup/connection', function($xml) {
+47: getAjaxData("api/vsim/operateswitch-vsim", function($xml) {
+63: getAjaxData("api/cradle/status-info", function($xml) {
+76: getAjaxData("api/vsim/checkhealth-vsim", function($xml) {
+89: getAjaxData('api/monitoring/status', function($xml) {
+133: log.error('MOBILENETWORKSETTING:get api/monitoring/status file failed');
+144: saveAjaxData('api/dialup/connection', newXmlString, function($xml) {
+158: saveAjaxData('api/dialup/connection', newXmlString, function($xml) {
+178: saveAjaxData('api/vsim/operateswitch-vsim', send_xml, function($xml) {
+197: log.error('MOBILENETWORKSETTING:get api/net/plmn-list file failed');
+208: getAjaxData('api/dhcp/settings', function($xml) {
+
+### common/js/wifinetworks.js.gz
+103: getAjaxData('api/wlan/sta-sim-relation', function($xml) {
+430: saveAjaxData('api/wlan/wifidial', dial_xml, function($xml) {
+433: log.debug('api/wlan/wifidial ok');
+440: log.debug('api/wlan/wifidial error');
+453: saveAjaxData('api/wlan/wifidial', dial_xml, function($xml) {
+456: log.debug('api/wlan/wifidial ok');
+469: log.debug('api/wlan/wifidial error');
+475: getAjaxData('api/monitoring/status', function($xml) {
+490: saveAjaxData('api/wlan/wifiaddprofile', profile_xml, function($xml) {
+493: log.debug('api/wlan/wifiaddprofile ok');
+503: log.debug('api/wlan/wifiaddprofile error');
+557: getAjaxData("api/wlan/handover-setting", function($xml) {
+568: log.error("WiFi network: get api/wlan/handover-setting data error");
+571: getAjaxData('api/wlan/multi-switch-settings', function($xml) {
+593: saveAjaxData('api/wlan/handover-setting', handDover_xml, function($xml) {
+596: log.debug('api/wlan/handover-setting ok');
+603: log.debug('api/wlan/handover-setting error');
+628: getAjaxData("api/monitoring/status", function($xml) {
+635: saveAjaxData('api/wlan/handover-setting', handDover_xml, function($xml) {
+689: saveAjaxData('api/wlan/wifiscan', scan_xml, function($xml) {
+702: log.debug('WiFi network: post api/wlan/wifiscan error');
+708: getAjaxData("api/wlan/wifiscan", function($xml) {
+729: log.error("WiFi network: get api/wlan/wifiscan  data error");
+735: getAjaxData("api/wlan/wifiscanresult", function($xml) {
+756: log.error("WiFi network: get api/wlan/wifiscanresult data empty");
+767: log.error("WiFi network: get api/wlan/wifiscanresult data error");
+777: //getAjaxData("api/wlan/station-information", function($xml) {
+782: getAjaxData('api/wlan/station-information', function($xml) {
+846: log.error("WiFi network: get api/wlan/station-information data error");
+1171: getAjaxData("api/wlan/wifiprofile", function($xml) {
+1182: log.error("WiFi network: get api/wlan/profile-information data error");
+1186: log.error("WiFi network: get api/wlan/profile-information data error");
+1318: saveAjaxData('api/wlan/wifiaddprofile', profile_xml, function($xml) {
+1321: log.debug('api/wlan/wifiaddprofile ok');
+1333: log.debug('api/wlan/wifiaddprofile error');
+1357: getAjaxData('api/cradle/status-info', function($xml) {
+
+### common/js/wifipriority.js.gz
+148: saveAjaxData('api/wlan/wifiprofile', priority_xml, function($xml) {
+153: log.debug('api/wlan/wifiprofile ok');
+160: log.debug('api/wlan/wifiprofile error');
+169: getAjaxData("api/wlan/wifiprofile", function($xml) {
+183: log.error("WiFi network: get api/wlan/profile-information data error");
+413: saveAjaxData('api/wlan/wifiprofile', priority_xml, function($xml) {
+420: log.debug('api/wlan/wifiprofile error');
+452: getAjaxData('api/cradle/status-info', function($xml) {
+
+### common/js/wlanadvanced.js.gz
+443: var strUrl = 'api/wlan/basic-settings';
+448: strUrl = 'api/wlan/multi-security-settings-ex';
+452: strUrl = 'api/wlan/multi-security-settings';
+456: getAjaxData('api/wlan/multi-basic-settings', function($xml) {
+485: getAjaxData(strUrl, function($xml) {
+682: getAjaxData(strUrl, function($xml) {
+885: saveAjaxData('api/wlan/multi-basic-settings', xmlStr, function($xml) {
+904: var strUrl = 'api/wlan/basic-settings';
+907: strUrl = 'api/wlan/multi-security-settings';
+913: saveAjaxData(strUrl, xmlstr, function($xml) {
+988: saveAjaxData('api/wlan/multi-basic-settings', xmlBasicStr, function($xml) {
+1013: saveAjaxData('api/wlan/multi-security-settings-ex', xmlStr_ex, function($xml) {
+1189: getAjaxData('api/wlan/wifi-feature-switch', function($xml) {
+1198: getAjaxData('api/wlan/multi-switch-settings', function($xml) {
+1206: getAjaxData('api/pin/status', function($xml) {
+1214: getAjaxData('api/device/information', function($xml) {
+
+### common/js/wlanbasicsettings.js.gz
+70: getAjaxData('api/wlan/basic-settings', function($xml) {
+76: getAjaxData('api/wlan/security-settings', function($xml) {
+119: getAjaxData('api/wlan/oled-showpassword', function($xml) {
+182: getAjaxData('api/wlan/multi-basic-settings', function($xml) {
+220: getAjaxData('api/wlan/multi-switch-settings', function($xml) {
+539: saveAjaxData('api/wlan/basic-settings', xmlStr, function($xml) {
+587: saveAjaxData('api/wlan/security-settings', xmlStr, function($xml) {
+859: saveAjaxData('api/wlan/multi-basic-settings', xmlStr, function($xml) {
+895: saveAjaxData('api/wlan/multi-switch-settings', xmlStrs, function($xml) {
+901: log.info("api/wlan/multi-switch-settings  response OK");
+999: getAjaxData("api/wlan/handover-setting", function($xml) {
+1040: getAjaxData('api/wlan/wifi-feature-switch', function($xml) {
+1076: getAjaxData("api/wlan/multi-security-settings-ex", function($xml) {
+1152: saveAjaxData('api/wlan/oled-showpassword', xmlStr, function($xml) {
+
+### common/js/wlanmacfilter.js.gz
+26: getAjaxData('api/wlan/wifi-feature-switch', function($xml) {
+40: getAjaxData('api/wlan/multi-macfilter-settings', function($xml) {
+49: getAjaxData('api/wlan/multi-basic-settings', function($xml) {
+59: getAjaxData('api/wlan/mac-filter', function($xml) {
+212: sendCmd = 'api/wlan/multi-macfilter-settings';
+219: sendCmd = 'api/wlan/multi-basic-settings';
+227: sendCmd = 'api/wlan/mac-filter';
+233: saveAjaxData(sendCmd, newXmlString, function($xml) {
+251: getAjaxData('api/wlan/handover-setting', function($xml) {
+320: getAjaxData('api/wlan/multi-basic-settings', function($xml) {
+358: getAjaxData('api/wlan/basic-settings', function($xml) {
+
+### common/js/wps.js.gz
+133: saveAjaxData('api/wlan/wps-cancel', wps_cancel, function($xml) {
+190: getAjaxData('api/wlan/multi-security-settings-ex', function($xml) {
+196: getAjaxData('api/wlan/multi-switch-settings', function($xml) {
+235: getAjaxData('api/wlan/basic-settings', function($xml) {
+260: getAjaxData('api/wlan/security-settings', function($xml) {
+297: getAjaxData('api/wlan/multi-security-settings', function($xml) {
+323: getAjaxData('api/wlan/multi-basic-settings', function($xml) {
+373: getAjaxData('api/wlan/multi-basic-settings', function($xml) {
+477: getAjaxData('api/wlan/wps', function($xml) {
+528: getAjaxData('api/wlan/wps', function($xml) {
+541: getAjaxData('api/wlan/wps-pbc', function($xml) {
+565: getAjaxData('api/wlan/wps-appin', function($xml) {
+659: getAjaxData('api/wlan/wps-pbc', function($xml) {
+690: saveAjaxData('api/wlan/wps', wps_xml, function($xml) {
+742: saveAjaxData('api/wlan/wps-pbc', pbc_xml, function($xml) {
+775: saveAjaxData('api/wlan/wps-appin', wps_xml_ex, function($xml) {
+806: saveAjaxData('api/wlan/multi-basic-settings', xmlStr, function($xml) {
+828: getAjaxData('api/wlan/multi-basic-settings', function($xml) {
+
+### common/language/lang_ar_sa.js.gz
+603: var system_label_notification = "إخطار";
+772: var hilink_notification_tray = "علبة الإخطار";
+773: var hilink_notification_tray_title = "أداة الإعلام تبقيك مواكبا لإخطارات حسابك الأخيرة، بما في ذلك:";
+783: var notificationtray_pc_assistant_statement  = "<p>1. منح الترخيص<br/>استثناء ما خلاف ذلك و منصوص عليه  صراحة  في اتفاقية الترخيص هذه، يمكنك فقط تثبيت واستخدام نسخة واحدة من SOFTWARE PRODUCT \"منتج البرامج\" على نظام كمبيوتر واحد.<br/>وقد يمكنك جعل نسخة احتياطية واحدة فقط من جزء برمجيات الكمبيوتر من SOFTWARE PRODUCT لأغراض الأرشيف.</p><p>2. حد الترخيص<br/>استخدام SOFTWARE PRODUCT على العديد من أجهزة الكمبيوتر بمشاركة كل من الكلي أو الجزئي من SOFTWARE PRODUCT.<br/>حذف إشعارات حقوق التأليف والنشر على أي نسخة من SOFTWARE PRODUCT.<br/>الكشف عن، نقل، توفير، الإيجار أو جعله متوفراً في أي شكل من الأشكال أو البرمجيات أو أي جزء منها أو إلى طرف ثالث دون موافقة مسبقة من HUAWEI.</p><p>3. يبقى البرنامج ملكية HUAWEI<br />جميع الحقوق التي لم تكن بالتحديد ممنوحة بموجب هذه EULA محفوظة من قبل HUAWEI.</p>";
+
+### common/language/lang_bg_bg.js.gz
+603: var system_label_notification = "Известяване";
+772: var hilink_notification_tray = "Системна област за уведомяване";
+773: var hilink_notification_tray_title = "Инструментът за уведомяване ви информира за най-новите уведомявания за вашия профил, включително:";
+783: var notificationtray_pc_assistant_statement  = "<p>1. ПРЕДОСТАВЯНЕ НА ЛИЦЕНЗ<br/>Освен ако не е изрично предвидено в това ЛСКП, може да инсталирате и използвате едно копие на СОФТУЕРНИЯ ПРОДУКТ на една компютърна система.<br/>Можете да направите едно резервно копие на частта на компютърния софтуер на СОФТУЕРНИЯ ПРОДУКТ само за архивни цели.</p><p>2. ОГРАНИЧАВАНЕ НА ЛИЦЕНЗА<br/>Използване на СОФТУЕРНИЯ ПРОДУКТ на много компютри чрез споделяне на СОФТУЕРНИЯ ПРОДУКТ изцяло или частично.<br/>Изтриване на декларации за авторското право върху всяко копие на СОФТУЕРНИЯ ПРОДУКТ.<br/>Разкриване, прехвърляне, предоставяне под наем или предоставяне на разположение по друг начин под всякаква форма на СОФТУЕРА или някаква част от него на трето лице без предварителното съгласие на HUAWEI.</p><p>3. ПРОГРАМАТА ОСТАВА СОБСТВЕНОСТ НА HUAWEI<br />Всички права, които не са изрично предоставени съгласно това ЛСКП, са запазени от HUAWEI.</p>";
+
+### common/language/lang_cs_cz.js.gz
+603: var system_label_notification = "Upozornění";
+772: var hilink_notification_tray = "Panel oznámení";
+773: var hilink_notification_tray_title = "S oznamovacím nástrojem máte přístup k nejnovějším oznámením týkajících se vašeho účtu včetně následujících:";
+783: var notificationtray_pc_assistant_statement  = "<p>1. UDĚLENÍ LICENCE<br/>S výjimkou případů výslovně uvedených v této smlouvě EULA můžete nainstalovat a používat pouze jednu kopii SOFTWAROVÉHO PRODUKTU v jednom počítačovém systému.<br/>Můžete vytvořit jednu záložní kopii části počítačového softwaru SOFTWAROVÉHO PRODUKTU pouze pro účely archivace.</p><p>2. OMEZENÍ LICENCE<br/>Použití SOFTWAROVÉHO PRODUKTU na více počítačích sdílením celého nebo části SOFTWAROVÉHO PRODUKTU.<br/>Odstranění upozornění o autorských právech na jakékoliv kopii SOFTWAROVÉHO PRODUKTU.<br/>Zveřejnění, přenos, poskytnutí, pronájem nebo jiné zpřístupnění v jakékoliv formě SOFTWARU nebo jeho části třetí straně bez předchozího souhlasu společnosti HUAWEI.</p><p>3. PROGRAM ZŮSTÁVÁ VLASTNICTVÍM SPOLEČNOSTI HUAWEI<br />Všechna práva, která nejsou výslovně udělena v rámci této smlouvy EULA, jsou vyhrazena společností HUAWEI.</p>";
+
+### common/language/lang_da_dk.js.gz
+603: var system_label_notification = "Besked";
+772: var hilink_notification_tray = "Meddelelsesbakke";
+773: var hilink_notification_tray_title = "Denne bakke viser de følgende meddelelser:";
+783: var notificationtray_pc_assistant_statement  = "<p>1. BEVILLING AF LICENS<br/>Undtagen hvis det er udtrykkeligt nævnt i denne EULA, må du kun installere og bruge et kopi af SOFTWAREPRODUKTET på et computersystem.<br/>Du må kun tage et enkelt sikkerhedskopi af computerens software, dvs. det afsnit af SOFTWAREPRODUKTET til arkiveringsmæssige formål.</p><p>2. LICENSBEGRÆNSNING<br/>Brug af SOFTWAREPRODUKTET på mange computere ved at dele alt eller dele af SOFTWAREPRODUKTET.<br/>Slette meddelelsen om ophavsret på en kopi af SOFTWAREPRODUKTET.<br/>Afsløre, overføre, tilvejebringe, udleje eller på anden måde gøre tilgængelig på nogen måde, SOFTWARE, eller et afsnit deraf, til en tredjepart uden forudgående tilladelse fra HUAWEI.</p><p>3. PROGRAM FORBLIVER HUAWEI'S EJENDOM<br />Alle rettigheder, som ikke specifikt er blevet bevilliget ifølge denne EULA forbeholdes af HUAWEI.</p>";
+
+### common/language/lang_de_de.js.gz
+603: var system_label_notification = "Benachrichtigung";
+772: var hilink_notification_tray = "Benachrichtigungsablage";
+773: var hilink_notification_tray_title = "Diese Ablage zeigt die folgende Benachrichtigungsmeldungen an:";
+783: var notificationtray_pc_assistant_statement  = "<p>1. LIZENZ<br/>Bis auf andere ausdrücklich geregelte Bestimmungen in dieser EULA dürfen Sie nur eine Kopie des SOFTWARE-PRODUKTES auf einem Computersystem installieren und nutzen.<br/>Sie dürfen eine einzelne Sicherungskopie der Computersoftware vom SOFTWARE-PRODUKT nur zur Archivierung anlegen.</p><p>2. BEGRENZUNG DER LIZENZ<br/>Gebrauch des SOFTWARE-PRODUKTES auf mehreren Computern, indem die Gesamtheit oder ein Teil des SOFTWARE-PRODUKTES weiter gegeben wird.<br/>Löschen von Copyright-Hinweisen auf einer Kopie des SOFTWARE-PRODUKTES.<br/>Weitergabe, Verbreitung, Übergabe, Vermietung oder andere Bereitstellung der SOFTWARE oder eines Teils an Dritte, ohne die zuvor eingeholte Einwilligung von HUAWEI.</p><p>3. DAS PROGRAM BLEIBT EIGENTUM VON HUAWEI<br />Alle Rechte, die nicht ausdrücklich in dieser EULA gewährt wurden, sind HUAWEI vorbehalten.</p>";
+
+### common/language/lang_el_gr.js.gz
+603: var system_label_notification = "Ειδοποίηση";
+772: var hilink_notification_tray = "Περιοχή ειδοποιήσεων";
+773: var hilink_notification_tray_title = "Με το Εργαλείο ειδοποιήσεων παραμένετε πάντα ενημερωμένοι με τις τελευταίες ειδοποιήσεις σχετικά με το λογαριασμό σας, όπως:";
+783: var notificationtray_pc_assistant_statement  = "<p>1. ΧΟΡΗΓΗΣΗ ΑΔΕΙΑΣ ΧΡΗΣΗΣ<br/>Εκτός εάν ορίζεται διαφορετικά στην παρούσα Άδεια Χρήσης Τελικού Χρήστη, μπορείτε να εγκαταστήσετε και να χρησιμοποιείτε ένα αντίγραφο του ΠΡΟΪΟΝΤΟΣ ΛΟΓΙΣΜΙΚΟΥ σε ένα σύστημα υπολογιστή.<br/>Μπορείτε να δημιουργήσετε ένα μόνο αντίγραφο ασφαλείας του τμήματος λογισμικού του ΠΡΟΪΟΝΤΟΣ ΛΟΓΙΣΜΙΚΟΥ μόνο για σκοπούς αρχειοθέτησης.</p><p>2. ΠΕΡΙΟΡΙΣΜΟΙ ΤΗΣ ΑΔΕΙΑΣ ΧΡΗΣΗΣ<br/>Χρήση του ΠΡΟΪΟΝΤΟΣ ΛΟΓΙΣΜΙΚΟΥ σε πολλούς υπολογιστές με κοινή χρήση όλου ή τμήματος του ΠΡΟΪΟΝΤΟΣ ΛΟΓΙΣΜΙΚΟΥ.<br/>Διαγραφή των σημειώσεων πνευματικών δικαιωμάτων σε οποιοδήποτε αντίγραφο του ΠΡΟΪΟΝΤΟΣ ΛΟΓΙΣΜΙΚΟΥ.<br/>Γνωστοποίηση, μεταφορά, παροχή, ενοικίαση ή διαθεσιμότητας με άλλον τρόπο σε οποιαδήποτε μορφή, του ΛΟΓΙΣΜΙΚΟΥ ή οποιουδήποτε τμήματος αυτού, σε τρίτους χωρίς την προηγούμενη συγκατάθεση της HUAWEI.</p><p>3. ΤΟ ΠΡΟΓΡΑΜΜΑ ΠΑΡΑΜΕΝΕΙ ΙΔΙΟΚΤΗΣΙΑ ΤΗΣ HUAWEI<br />Όλα τα δικαιώματα που δεν χορηγούνται συγκεκριμένα σύμφωνα με την παρούσα Άδεια Χρήσης Τελικού Χρήστη, είναι υπό την επιφύλαξη της HUAWEI.</p>";
+
+### common/language/lang_en_us.js.gz
+603: var system_label_notification = "Notification";
+766: var hilink_label_newmessage = "Notification tool for new messages and more…";
+772: var hilink_notification_tray = "Notification tray";
+773: var hilink_notification_tray_title = "The Notification Tool keeps you up to date with the latest notifications about your account, including:";
+779: var setting_pc_assistant_label_title = "Notification Tool Settings";
+783: var notificationtray_pc_assistant_statement  = "<p>1. GRANT OF LICENSE<br/>Except as otherwise expressly provided in this EULA, you may only install and use one copy of the SOFTWARE PRODUCT on one computer system.<br/>You may make a single back-up copy of the computer software portion of the SOFTWARE PRODUCT only for archival purposes.</p><p>2. LIMITATION OF LICENSE<br/>Using the SOFTWARE PRODUCT on many computers by sharing all of or partial of the SOFTWARE PRODUCT.<br/>Delete the copyright notices on any copy of the SOFTWARE PRODUCT.<br/>Disclose, transfer, provide, rent or otherwise make available in any form, SOFTWARE, or any portion thereof, to a third party without the prior consent of HUAWEI.</p><p>3. PROGRAM REMAINS HUAWEI'S PROPERTY<br />All rights not specifically granted under this EULA are reserved by HUAWEI.</p>";
+1326: var IDS_tr069_notice = "Periodic notification";
+1327: var IDS_tr069_notice_interval = "Notification interval";
+
+### common/language/lang_es_ar.js.gz
+603: var system_label_notification = "Notificación";
+772: var hilink_notification_tray = "Bandeja de notificaciones";
+773: var hilink_notification_tray_title = "Esta bandeja muestra los mensajes de notificación siguientes:";
+783: var notificationtray_pc_assistant_statement  = "<p>1. DERECHOS OTORGADOS POR LA LICENCIA<br />Exceptuando a lo dispuesto textualemente en el presente CLUF, Usted sólo puede instalar y utilizar<br /> una copia del SOFTWARE en un sistema informático.<br />Podrá realizar una única copia de seguridad del componente informático del SOFTWARE y con el único<br /> objetivo de guardar dicha copia.</p><p>2. LIMITACIONES DE LA LICENCIA<br />Sólo puede instalarlo/usarlo junto con el dispositivo de banda ancha que se le proporcionan dentro de este paquete.<br />Utilizar el SOFTWARE en varios equipos compartiendo para ello el SOFTWARE o parte de éste.<br />Descomponer el SOFTWARE y utilizarlo en diferentes sistemas o incorporarlo en otros sistemas de software.<br />Eliminar los avisos de propiedad intelectual de cualquiera de las copias del SOFTWARE.<br />Revelar, transferir, distribuir, alquilar u ofrecer de cualquier forma el SOFTWARE o alguno de sus<br /> componentes a una tercera parte sin el consentimiento previo de HUAWEI.<br /> Utilizar técnicas de ingeniería inversa, descompilar ni desensamblar el SOFTWARE, excepto y únicamente<br /> en la medida en que dicha actividad esté expresamente permitida por la legislación aplicable, no obstante la presente limitación.</p><p>3. EL PROGRAMA SEGUIRÁ SIENDO PROPIEDAD DE HUAWEI<br />HUAWEI se reserva todos aquellos derechos que no se hayan sido otorgados específicamente en este CLUF.<br /> HUAWEI o sus distribuidores se reservan la propiedad de todos los derechos relativos<br /> a la propiedad intelectual del SOFTWARE, de los materiales impresos que lo acompañan y de cualesquiera<br /> copias que se hayan realizado de éste, incluyendo todos los derechos en cuanto a patentes, <br />derechos de propiedad intelectual, marcas comerciales y secretos aplicables.</p>";
+
+### common/language/lang_es_es.js.gz
+603: var system_label_notification = "Notificación";
+772: var hilink_notification_tray = "Bandeja de notificación";
+773: var hilink_notification_tray_title = "Esta bandeja muestra los siguientes mensajes de notificación:";
+783: var notificationtray_pc_assistant_statement  = "<p>1. CONCESIÓN DE LICENCIA<br/>Excepto cuando este contrato de licencia de usuario final (CLUF) indique expresamente lo contrario, usted sólo puede instalar y utilizar una copia del PRODUCTO DE SOFTWARE en un sistema informático.<br/>Puede realizar una sola copia de seguridad del contenido informático del PRODUCTO DE SOFTWARE únicamente para su conservación.</p><p>2. LIMITACIÓN DE LICENCIA<br/>Usted no puede:<br/>- Usar el PRODUCTO DE SOFTWARE en varios ordenadores compartiendo parte o la totalidad del PRODUCTO DE SOFTWARE.<br/>- Eliminar los avisos de copyright de cualquier copia del PRODUCTO DE SOFTWARE.<br/>- Divulgar, transferir, proporcionar, alquilar o distribuir de cualquier forma el SOFTWARE o una parte del mismo a terceros sin el permiso de HUAWEI.</p><p>3. EL PROGRAMA SIGUE SIENDO PROPIEDAD DE HUAWEI<br />HUAWEI se reserva todos los derechos no concedidos específicamente por este CLUF.</p>";
+
+### common/language/lang_et_ee.js.gz
+603: var system_label_notification = "Teade";
+772: var hilink_notification_tray = "Teatamissalv";
+773: var hilink_notification_tray_title = "Teatamisvahend saadab teile uusimaid teateid teie konto kohta, muu hulgas:";
+783: var notificationtray_pc_assistant_statement  = "<p>1. LITSENTS<br/>Välja arvatud käesolevas lõppkasutaja litsentsilepingus otseselt nimetatud juhtudel, on teil lubatud installida ja kasutada vaid üht TARKVARATOOTE eksemplari ühel arvutisüsteemil.<br/>TARKVARATOOTE arvutitarkvara osast on lubatud teha vaid üks varukoopia arhiveerimiseks.</p><p>2. LITSENTSI PIIRANGUD<br/>TARKVARATOOTE kasutamine mitmes arvutis ühiskasutuse või osalise ühikasutuse teel.<br/>Autoriõiguste märgete kustutamine TARKVARATOOTE eksemplarilt.<br/>TARKVARA või selle osa avaldamine, ülekandmine, pakkumine, rentimine või muul viisil kättesaadavaks tegemine kolmandale osapoolele HUAWEI eelneva nõusolekuta.</p><p>3. PROGRAMM ON HUAWEI OMAND<br />Kõik õigused, mida ei ole selgesõnaliselt antud käesoleva lõppkasutaja litsentsilepinguga, kuuluvad HUAWEI-le.</p>";
+
+### common/language/lang_fa_fa.js.gz
+603: var system_label_notification = "اعلان";
+772: var hilink_notification_tray = "سینی اعلان";
+773: var hilink_notification_tray_title = "ابزار اعلان جدیدترین اعلان‌های مربوط به حساب شما از جمله موارد زیر را به اطلاع‌تان می‌رساند:";
+783: var notificationtray_pc_assistant_statement  = "<p>1. اعطای مجوز<br/>به‌جز در مواردی که صریحاً در این توافق‌نامه مجوز کاربر نهایی آمده است، تنها اجازه نصب و استفاده از یک نسخه از محصول نرم‌افزاری را بر روی یک سیستم رایانه‌ای دارید.<br/>می‌توانید یک کپی پشتیبان از بخش نرم‌افزار رایانه‌ای محصول نرم‌افزاری و فقط به منظور آرشیو تهیه کنید.</p><p>2. محدودیت مجوز<br/>استفاده از محصول نرم‌افزاری بر روی چندین رایانه از طریق به اشتراک‌گذاری تمام یا بخشی از محصول نرم‌افزاری.<br/>حذف اعلامیه‌های کپی‌رایت هر یک از نسخه‌های محصول نرم‌افزاری.<br/>افشا، انتقال، ارائه، اجاره یا در دسترس قرار دادن نرم‌افزار یا هر بخشی از آن به هر شکل دیگر جهت اشخاص ثالث بدون موافقت قبلی Huawei.</p><p>3. برنامه متعلق به Huawei خواهد بود<br />کلیه حقوقی که به‌طور مشخص در این توافق‌نامه مجوز کاربر نهایی اعطاء نشده برای Huawei محفوظ است.</p>";
+
+### common/language/lang_fi_fi.js.gz
+603: var system_label_notification = "Ilmoitus";
+772: var hilink_notification_tray = "Ilmoitukset ilmaisinalueelle";
+773: var hilink_notification_tray_title = "Ilmaisinalueella näytetään seuraavat ilmoitusviestit:";
+783: var notificationtray_pc_assistant_statement  = "<p>1. KÄYTTÖOIKEUDEN MYÖNTÄMINEN<br/>Paitsi tässä loppukäyttäjän käyttöoikeussopimuksessa erityisesti mainitusti, saat asentaa vain yhden OHJELMISTOTUOTTEEN kopion yhteen tietokonejärjestelmään.<br/>Saat tehdä vain arkistointitarkoituksia varten OHJELMISTOTUOTTEEN tietokoneohjelman sisältävästä osasta yhden varmuuskopion.</p><p>2. KÄYTTÖOIKEUDEN RAJOITUKSET<br/>OHJELMISTOTUOTETTA ei saa käyttää usealla tietokoneella jakamalla OHJELMISTOTUOTETTA kokonaan tai osittain.<br/>Minkään OHJELMISTOTUOTTEEN kopion tekijänoikeudellisia huomautuksia ei saa poistaa.<br/>OHJELMAA tai mitään sen osaa ei saa ilmaista, siirtää, tarjota käyttöön, vuokrata tai saattaa muutoin saatavilla kolmansille osapuolille missään muodossa ilman HUAWEIN kirjallista ennakkolupaa.</p><p>3. OHJELMA SÄILYY HUAWEIN OMAISUUTENA<br />HUAWEI pidättää itsellään  kaikki oikeudet, joita ei nimenomaisesti anneta tässä loppukäyttäjän käyttöoikeussopimuksessa.</p>";
+
+### common/language/lang_fr_fr.js.gz
+603: var system_label_notification = "Notification";
+766: var hilink_label_newmessage = "Outils de notification de nouveau message et plus ...";
+772: var hilink_notification_tray = "Notification Tray";
+773: var hilink_notification_tray_title = "Cet intercalaire affiche les messages de notification suivants :";
+779: var setting_pc_assistant_label_title = "Paramètres de l'outil de notification";
+783: var notificationtray_pc_assistant_statement  = "<p>1. ACCORD DE LICENCE<br/>Sauf notification expresse par cette licence d'utilisation (EULA), vous êtes autorisé à installer et à utiliser une seule copie du LOGICIEL sur un seul ordinateur.<br/>Vous êtes uniquement autorisé à effectuer une copie de sauvegarde de ce LOGICIEL à des fins d'archivage.</p><p>2. RESTRICTIONS DE LICENCE<br/>Partage partiel ou total du LOGICIEL entre plusieurs ordinateurs.<br/>Suppression des notifications de copyright (droits d'auteur) sur toute copie du LOGICIEL.<br/>Divulgation, transfert, location et toute autre mise à disposition du LOGICIEL ou d'une portion du LOGICIEL à un tiers sans autorisation préalable de HUAWEI.</p><p>3. LE PROGRAMME DEMEURE LA PROPRIÉTÉ DE HUAWEI<br />Les droits non octroyés spécifiquement par cette licence d'utilisation sont réservés à HUAWEI.</p>";
+1326: var IDS_tr069_notice = "Notification périodique";
+1327: var IDS_tr069_notice_interval = "Intervalle de notification";
+
+### common/language/lang_he_il.js.gz
+603: var system_label_notification = "הודעה";
+772: var hilink_notification_tray = "מגש הודעות";
+773: var hilink_notification_tray_title = "כלי ההודעות דואג ליידע אותך בידיעות האחרונות לגבי חשבונך, לרבות:";
+783: var notificationtray_pc_assistant_statement  = "<p>1. מתן רשיון<br/>להוציא תנאים שמופיעים במפורש בהסכם רשיון משתמש סופי (EULA‏), אתה רשאי להתקין עותק אחד של מוצר התוכנה ולהשתמש בו במערכת מחשב.<br/>אתה רשאי להכין עותק גיבוי אחד של מרכיב התוכנה של מוצר התוכנה ולשמור אותו בארכיב.</p><p>2. מגבלות הרשיון<br/>שימוש במוצר התוכנה במחשבים רבים באמצעות שיתוף של מוצר הוכנה או חלק ממנו.<br/>מחיקת ההודעה על זכויות היוצרים מעותק כלשהו של מוצר התוכנה.<br/>חשיפה, העברה, מסירה, השכרה או הפיכה לזמין בכל צורה שהיא של התוכנה או חלק ממנה לצד שלישי ללא הסכמה מראש של HUAWEI.</p><p>3. התוכנית נשארת בבעלות HUAWEI<br />כל הזכויות שלא הוענקו במפורש בהסכם רשיון משתמש קצה זה שמורות ל-HUAWEI‏.</p>";
+
+### common/language/lang_hr_hr.js.gz
+603: var system_label_notification = "Obavijest";
+772: var hilink_notification_tray = "Traka s obavijestima";
+773: var hilink_notification_tray_title = "Alat za obavještavanje obavještava vas o najnovijim informacijama o vašem računu, uključujući:";
+783: var notificationtray_pc_assistant_statement  = "<p>1. DOZVOLA ZA LICENCU<br/>Osim ako je drugačije izričito navedeno u ovom ugovoru o licenci softvera za krajnjeg korisnika (EULA), možete instalirati i koristiti samo jednu kopiju SOFTVERSKOG PROIZVODA na jednom računalnom sustavu.<br/>Možete napraviti jednu rezervnu sigurnosnu kopiju softvera računala SOFTVERSKOG PROIZVODA samo radi namjene arhiviranja.</p><p>2. OGRANIČENJE LICENCE<br/>Korištenje SOFTVERSKOG PROIZVODA na mnogim računalima putem dijeljenja svih dijelova ili dijela SOFTVERSKOG PROIZVODA.<br/>Brisanje napomene o autorskim pravima na svim kopijama SOFTVERSKOG PROIZVODA.<br/>Otkrivanje, prijenos, pružanje, iznajmljivanje ili drugačije omogućavanje dostupnosti u bilo kojem obliku, SOFTVERA, ili bilo kojeg njegovog dijela, trećoj osobi, bez prethodnog pristanka tvrtke HUAWEI.</p><p>3. PROGRAM OSTAJE VLASNIŠTVO TVRTKE HUAWEI<br />Sva prava koja nisu odobrena ovim ugovorom o licenci softvera za krajnjeg korisnika (EULA) pridržava tvrtka HUAWEI.</p>";
+
+### common/language/lang_hu_hu.js.gz
+603: var system_label_notification = "Értesítés";
+772: var hilink_notification_tray = "Értesítés tálca";
+773: var hilink_notification_tray_title = "Ez a tálca kijelzi az alábbi értesítéseket:";
+783: var notificationtray_pc_assistant_statement  = "<p>1. LICENSZ ENGEDÉLY<br/>Kivéve, ha másképp nincs kifejezetten meghatározva ebben a végfelhasználói licensz egyetértésben, a SZOFTWERTERMÉKET csak egyetlen számítógépen telepítheti és használhatja.<br/>Csak egyetlen biztonsági másolatot készíthet, a SZOFTWERTERMÉK részletéről, kizárólag tárolás céljára. </p><p>2. LICENSZ KORLÁTOZÁS<br/>A SZOFTWERTERMÉK részbeni, vagy teljes megosztása több számítógépen.<br/>A SZOFTWERTERMÉK bármely másolatáról a copyright bejegyzés kitörlése.<br/>A SZOFTWERTERMÉK részbeni, vagy teljes közzététele, átadása, szolgáltatása, bérbe adása, vagy bármi más módon egy harmadik félnek történő hozzáférhetővé tétele a HUAWEI előzetes beleegyezése nélkül.</p><p>3. A PROGRAM HUAWEI TULAJDONA MARAD<br />Minden, a jelen végfelhasználói licensz egyetértésben meg nem adott jog a HUAWEI-nek fenntartva.</p>";
+
+### common/language/lang_id_id.js.gz
+603: var system_label_notification = "Notifikasi";
+772: var hilink_notification_tray = "Baki Notifikasi";
+773: var hilink_notification_tray_title = "Alat ini menampilkan notifikasi terakhir, termasuk:";
+783: var notificationtray_pc_assistant_statement  = "<p>1. PEMBERIAN LlSENSI<br/>Kecuali dinyatakan secara tersurat dalam Perjanjian Pengguna Akhir ini, Anda hanya boleh menginstal dan menggunakan satu salinan PRODUK PERANGKAT LUNAK pada satu sistem komputer.<br/>Anda boleh membuat satu salinan cadangan dari perangkat lunak komputer PRODUK PERANGKAT LUNAK hanya sebagai arsip saja.</p><p>2. PEMBATASAN LISENSI<br/>Penggunaan PRODUK PERANGKAT LUNAK pada banyak komputer dengan membagi-pakai semua atau sebagian dari PRODUK PERANGKAT LUNAK.<br/>Menghapus pemberitahuan hak cipta pada salinan PRODUK PERANGKAT LUNAK.<br/>Mengungkapkan, mentransfer, menyediakan, menyewakan atau menyediakan PERANGKAT LUNAK, atau bagian daripadanya dalam bentuk apapun, kepada pihak ketiga tanpa persetujuan terlebih dahulu dari HUAWEI.</p><p>3. PROGRAM ini TETAP MERUPAKAN HAK MILIK HUAWEI<br />Semua hak yang tidak secara spesifik diberikan berdasarkan Perjanjian Pengguna Akhir ini adalah hak milik HUAWEI.</p>";
+
+### common/language/lang_it_it.js.gz
+603: var system_label_notification = "Notifica";
+772: var hilink_notification_tray = "Barra di notifica";
+773: var hilink_notification_tray_title = "La barra mostra i seguenti messaggi di notifica:";
+783: var notificationtray_pc_assistant_statement  = "<p>1. CONTRATTO DI LICENZA<br/>Eccetto che laddove espressamente indicato nel presente EULA, l'utente può installare e utilizzare solo una copia del SOFTWARE su di un singolo computer.<br/>﻿L'utente può creare una singola copia di backup della porzione software del SOFTWARE esclusivamente a scopo di archivio.</p><p>2. LIMITAZIONE DI LICENZA<br/>Utilizzo del SOFTWARE su più di un computer attraverso la condivisione totale o parziale del SOFTWARE.<br/>Eliminazione delle informazioni di copyright da qualsiasi copia del SOFTWARE.<br/>Diffusione, trasferimento, fornitura, noleggio o qualsiasi altra forma di pubblicazione del SOFTWARE, o di una parte di esso, a una terza parte senza il previo consenso di HUAWEI.</p><p>3. IL PROGRAMMA RIMANE PROPRIET﻿À DI HUAWEI<br />Tutti i diritti non specificamente garantiti dai termini del presente EULA sono riservati da HUAWEI.</p>";
+
+### common/language/lang_ja_jp.js.gz
+603: var system_label_notification = "通知";
+772: var hilink_notification_tray = "通知トレイ";
+773: var hilink_notification_tray_title = "通知ツールは、ご使用のアカウントに関する次のような最新の通知を常に提供しています。";
+783: var notificationtray_pc_assistant_statement  = "<p>1. ライセンス許諾<br/>特にこのEULAで明示されていない限り、1台のコンピュータ システムに本ソフトウェア製品のコピーを1部のみインストールし、使用できます。<br/>アーカイブ目的でのみ、本ソフトウェア製品のコンピュータ ソフトウェア部分のバックアップ コピーを1部作成できます。</p><p>2. ライセンスの制限<br/>本ソフトウェア製品のすべてまたは一部を複数のコンピュータ上で共有して利用すること。<br/>本ソフトウェア製品をコピーした場合に著作権表示を削除すること。<br/>HUAWEIの事前の同意なく、本ソフトウェアまたはその一部を第三者に対して開示、譲渡、提供、賃借、またはいかなる形式でも利用させること。</p><p>3. プログラムはHUAWEIの資産<br />本EULAに従って特に許諾されていないすべての権利は、HUAWEIが保有します。</p>";
+
+### common/language/lang_ko_kr.js.gz
+603: var system_label_notification = "알림";
+772: var hilink_notification_tray = "알림 트레이";
+773: var hilink_notification_tray_title = "알림 도구는 다음을 포함하여 계정에 대한 최신 알림 사항을 알려줍니다.";
+783: var notificationtray_pc_assistant_statement  = "<p>1. 라이센스 부여<br/>본 EULA에 특별히 명시되지 않은 한, 컴퓨터 시스템 한 대에 소프트웨어 제품 사본을 하나만 설치해서 사용할 수 있습니다.<br/>사용자는 보관 용도에 한해 본 소프트웨어 제품 중 컴퓨터 소프트웨어 부분에 대한 단일 백업 사본을 만들 수 있습니다.</p><p>2. 라이센스의 제한<br/>소프트웨어 제품의 전체 또는 일부를 공유하여 여러 컴퓨터에서 본 소프트웨어 제품을 사용하는 행위.<br/>소프트웨어 제품의 모든 사본에서 저작권 고지를 삭제하는 행위.<br/>HUAWEI의 사전 동의 없이 어떤 형태로든 소프트웨어의 일부를 제3자에게 공개, 전송, 제공, 임대 또는 사용 가능하게 만드는 행위.</p><p>3. 프로그램 - HUAWEI의 자산에 귀속<br />본 EULA 하에 특별히 부여되지 않은 모든 권한은 HUAWEI에 귀속됩니다.</p>";
+
+### common/language/lang_lt_lt.js.gz
+603: var system_label_notification = "Pranešimas";
+772: var hilink_notification_tray = "Pranešimų skydelis";
+773: var hilink_notification_tray_title = "Pranešimų įrankis rodo naujausius pranešimus apie paskyrą, įskaitant";
+783: var notificationtray_pc_assistant_statement  = "<p>1. LICENCIJOS SUTEIKIMAS<br/>Jei kitaip nėra nurodyta šiame EULA pranešime, galite tik įdiegti ir naudoti vieną PROGRAMINĖS ĮRANGOS kopiją vienoje kompiuterinėje sistemoje.<br/>Galite archyvavimo tikslais susikurti tik vieną atsarginę kopiją tam tikrai kompiuterio PROGRAMINĖS ĮRANGOS daliai.</p><p>2. LICENCIJOS APRIBOJIMAS<br/>Jei naudojama PROGRAMINĖ ĮRANGA ne viename kompiuteryje, kai bendrinama visa PROGRAMINĖ ĮRANGA arba jos dalis.<br/>Ištrinami autorinių teisių pranešimai apie bet kokią PROGRAMINĘ ĮRANGĄ.<br/>Atskleidžiama, perleidžiama, suteikiama, išnuomojama arba kitokiu būdu platinama PROGRAMINĖ ĮRANGA bet kokia forma ar bet kokia jos dalis trečiosioms šalims be išankstinio HUAWEI sutikimo.</p><p>3. PROGRAMA IŠLIEKA „HUAWEI“ NUOSAVYBE<br />Viso teisės, kurios nėra specialiai suteikiamos pagal šį EULA pranešimą, priklauso HUAWEI.</p>";
+
+### common/language/lang_lv_lv.js.gz
+603: var system_label_notification = "Paziņojums";
+772: var hilink_notification_tray = "Paziņojumu tekne";
+773: var hilink_notification_tray_title = "Paziņojumu rīkā ir pieejami paziņojumi ar jaunāko informāciju par kontu, tostarp:";
+783: var notificationtray_pc_assistant_statement  = "<p>1. LICENCES PIEŠĶIRŠANA<br/>Izņemot gadījumus, kas skaidri norādīti šajā EULA, jūs drīkstat instalēt PROGRAMMATŪRAS PRODUKTU tikai vienā datorsistēmā un lietot tikai tā vienu kopiju.<br/>Jūs drīkstat izveidot vienu PROGRAMMATŪRAS PRODUKTA datorprogrammatūras daļas dublējumkopiju tikai arhivēšanas vajadzībām.</p><p>2. LICENCES IEROBEŽOJUMI<br/>PROGRAMMATŪRAS PRODUKTU izmantošana vairākos datoros, koplietojot visu PROGRAMMATŪRAS PRODUKTU vai tā daļas.<br/>Jebkura PROGRAMMATŪRAS PRODUKTA kopijas paziņojuma par autortiesībām dzēšana.<br/>PROGRAMMATŪRAS vai tās daļas atklāšana, pārsūtīšana, izplatīšana, izīrēšana vai citāda veida tās padarīšana pieejamu trešajām pusēm bez HUAWEI piekrišanas.</p><p>3. PROGRAMMA PALIEK HUAWEI ĪPAŠUMĀ<br />Visas tiesības, kas nav īpaši piešķirtas šajā EULA, patur HUAWEI.</p>";
+
+### common/language/lang_mk_mk.js.gz
+603: var system_label_notification = "Известување";
+772: var hilink_notification_tray = "Лента за известувања";
+773: var hilink_notification_tray_title = "Алатката за известувања те известува за последните известувања за твојата сметка, вклучувајќи:";
+783: var notificationtray_pc_assistant_statement  = "<p>1. ДОДЕЛУВАЊЕ ДОЗВОЛА<br/>Освен ако не е поинаку изречно утврдено во EULA, може да инсталирате и користите само еден примерок од СОФТВЕРСКИОТ ПРОИЗВОД на еден компјутерски систем.<br/>Може да направите единствено еден резервен примерок на софтверскиот дел од СОФТВЕРСКИОТ ПРОИЗВОД само поради архивирање.</p><p>2. ОГРАНИЧУВАЊЕ НА ДОЗВОЛАТА<br/>Користење на СОФТВЕРСКИОТ ПРОИЗВОД на повеќе компјутери преку целосно или делумно споделување на СОФТВЕРСКИОТ ПРОИЗВОД.<br/>Бришење на ознаките за авторски права на кој било примерок од СОФТВЕРСКИОТ ПРОИЗВОД.<br/>Откривање, пренесување, обезбедување, изнајмување или отстапување на друг начин на СОФТВЕРОТ или дел од него на трето лице без претходна согласност од HUAWEI.</p><p>3. ПРОГРАМАТА ОСТАНУВА ВО СОПСТВЕНОСТ НА HUAWEI<br />Сите права што не се доделени со EULA се права на HUAWEI.</p>";
+
+### common/language/lang_mt_mt.js.gz
+603: var system_label_notification = "Notifika";
+772: var hilink_notification_tray = "Tray ta' notifika";
+773: var hilink_notification_tray_title = "L-Għodda ta' Notifika żżommok aġġornat bl-aħħar notifiki dwar il-kont tiegħek, li jinkludu:";
+783: var notificationtray_pc_assistant_statement  = "<p>1. GĦOTI TAL-LIĊENZJA<br/>Ħlief kif espressament iddikjarat f'dan l-EULA, inti tista' tinstalla u tuża kopja waħda biss tal-PRODOTT TAS-SOFTWARE fuq sistema waħda ta' kompjuter.<br/>Inti tista' tagħmel kopja waħda bħala back-up tal-porzjon tas-software tal-kompjuter tal-PRODOTT TAS-SOFTWARE biss għal skopijiet ta' arkivjar.</p><p>2. LIMITAZZJONI TAL-LIĊENZJA<br/>Li tuża l-PRODOTT TAS-SOFTWARE fuq ħafna kompjuters billi taqsam mal-oħrajn il-PRODOTT TAS-SOFTWARE kollu, jew parti minnu.<br/>Tħassar l-avviżi tal-copyright fuq kwalunkwe kopja tal-PRODOTT TAS-SOFTWARE.<br/>Tiżvela, tittrasferixxi, tipprovdi, tikri jew tagħmel disponibbli b'xi mod ieħor fi kwalunkwe forma, is-SOFTWARE, jew kwalunkwe parti minnu, lil parti terza mingħajr il-kunsens minn qabel ta' HUAWEI.</p><p>3. IL-PROGRAMM JIBQA' L-PROPJETÀ TA' HUAWEI<br />Id-drittijiet kollha mhux speċifikament mogħtija taħt dan l-EULA huma riżervati minn HUAWEI.</p>";
+
+### common/language/lang_nl_nl.js.gz
+603: var system_label_notification = "Mededeling";
+772: var hilink_notification_tray = "Meldingenvenster";
+773: var hilink_notification_tray_title = "Met de Meldingentool blijft u op de hoogte van de laatste meldingen over uw account, waaronder:";
+783: var notificationtray_pc_assistant_statement  = "<p>1. LICENTIEVERLENING <br/>Tenzij uitdrukkelijk anders is bepaald in deze EULA, mag u slechts een exemplaar van het SOFTWAREPRODUCT op een computersysteem installeren en gebruiken. <br/> U kunt een enkele back-up kopie van het deel van de computersoftware van het SOFTWAREPRODUCT maken, uitsluitend voor archiveringsdoeleinden.</p><p>2. BEPERKING VAN LICENTIE<br/>Gebruik van het SOFTWAREPRODUCT op een groot aantal computers door het delen van het gehele of gedeeltelijke onderdelen van het SOFTWAREPRODUCT.<br/>Het verwijderen van de verklaringen inzake auteursrecht op een exemplaar van het SOFTWAREPRODUCT.<br/>Openbaarmaking, het overdragen, het verstrekken van, verhuren of anderszins ter beschikking stellen in welke vorm dan ook van SOFTWARE of enig deel daarvan, aan derden zonder de voorafgaande toestemming van Huawei.</p><p>3. PROGRAMMA BLIJFT EIGENDOM VAN HUAWEI<br />Alle niet specifiek onder deze EULA verleende rechten zijn voorbehouden door Huawei.</p>";
+
+### common/language/lang_no_no.js.gz
+603: var system_label_notification = "Varsling";
+772: var hilink_notification_tray = "Varslingsfelt";
+773: var hilink_notification_tray_title = "Feltet viser følgende varslingsmeldinger:";
+783: var notificationtray_pc_assistant_statement  = "<p>1. LISENSAVTALE<br/>Med unntak av det som uttrykkelig fremgår av lisensavtalen, kan du bare installere og bruke én kopi av PROGRAMVAREPRODUKTET på ett datamaskinsystem.<br/>Du kan lage én sikkerhetskopi av datamaskinprogramvarepartisjonen av PROGRAMVAREPRODUKTET for lagringsformål.</p><p>2. LISENSBEGRENSNINGER<br/>Bruk av PROGRAMVAREPRODUKTET på flere datamaskiner ved å dele alle eller deler av PROGRAMVAREPRODUKTET.<br/>Sletting av opphavsmeldingene på alle kopiene av PROGRAMVAREPRODUKTET.<br/>Offentliggjøring, overføring, levering, leie eller gjøre PROGRAMVAREN, eller deler av denne, tilgjengelig på annen måte til tredjepart uten først å få samtykke for dette av HUAWEI.</p><p>3. PROGRAMMET FORBLIR HUAWEIS EIENDOM<br />Alle rettigheter som ikke gis spesifikt i denne lisensavtalen, forbeholdes av HUAWEI.</p>";
+
+### common/language/lang_pl_pl.js.gz
+603: var system_label_notification = "Powiadomienie";
+772: var hilink_notification_tray = "Zasobnik powiadomień";
+773: var hilink_notification_tray_title = "Ten zasobnik wyświetla następujące powiadomienia:";
+783: var notificationtray_pc_assistant_statement  = "<p>1. UDZIELENIE LICENCJI<br/>Z wyjątkiem sytuacji, gdy warunki niniejszej Umowy licencyjnej określają wyraźnie inaczej, można zainstalować i używać jedną kopię PRODUKTU OPROGRAMOWANIA w jednym systemie komputerowym.<br/>Wolno wykonać pojedynczą kopię zapasową części oprogramowania komputerowego PRODUKTU OPROGRAMOWANIA jedynie w celu archiwizacji. </p><p>2. OGRANICZENIE LICENCJI<br/>Używanie PRODUKTU OPROGRAMOWANIA na wielu komputerach przez całkowite lub częściowe udostępnienie PRODUKTU OPROGRAMOWANIA.<br/>Usuwanie powiadomień o ochronie praw autorskich z jakichkolwiek kopii PRODUKTU OPROGRAMOWANIA.<br/>Ujawnianie, przekazywanie, dostarczanie, wynajmowanie lub udostępnianie w inny sposób w jakiejkolwiek formie, OPROGRAMOWANIA, lub jakiejkolwiek jego części stronom trzecim bez uprzedniej zgody firmy HUAWEI.</p><p>3. PROGRAM JEST WŁASNOŚCIĄ FIRMY HUAWEJ<br />Wszelkie prawa nie udzielone wyraźnie w niniejszej Umowie licencyjnej są zastrzeżone przez firmę HUAWEI.</p>";
+
+### common/language/lang_pt_br.js.gz
+603: var system_label_notification = "Notificação";
+772: var hilink_notification_tray = "Aviso de Notificação";
+773: var hilink_notification_tray_title = "Este aviso mostras as seguintes mensagens de notificação:";
+783: var notificationtray_pc_assistant_statement  = "<p>1. CONCESSÃO DA LICENÇA<br />Exceto onde houver afirmações em contrário neste EULA, você só poderá instalar e usar uma cópia deste<br /> PRODUTO DE SOFTWARE em um sistema de computador. <br />Você pode fazer uma única cópia de backup da porção de software de computador do<br /> PRODUTO DE SOFTWARE apenas para fins de arquivamento ou backup.<p><p>2. LIMITAÇÃO DA LICENÇA<br />Você só tem permissão para instalação/uso junto com o dispositivo de banda larga fornecido neste pacote.<br />Usar o PRODUTO DE SOFTWARE em muitos computadores através do compartilhamento total ou parcial do PRODUTO DE SOFTWARE.<br />Decompor o PRODUTO DE SOFTWARE e usá-lo em diferentes computadores ou incluí-lo em outros sistemas de software.<br />Retirar os avisos de direitos autorais de qualquer cópia do PRODUTO DE SOFTWARE.<br />Divulgar, transferir, fornecer, alugar ou tornar disponível por qualquer outra forma o SOFTWARE ou qualquer<br /> porção dele a terceiros sem autorização prévia de HUAWEI.<br /> Praticar engenharia reversa, descompilar nem desmontar o PRODUTO DE SOFTWARE, exceto e apenas quando o direito<br /> a essa atividade for expressamente permitido pelas leis aplicáveis, apesar desta limitação.<p><p>3. O PROGRAMA CONTINUA SENDO PROPRIEDADE DE HUAWEI<br />A HUAWEI reserva-se todos os direitos não especificamente concedidos sob este EULA.<br /> Todos os direitos de propriedade intelectual e dos títulos relativos ao PRODUTO DE SOFTWARE, os materiais impressos<br /> que o acompanham e quaisquer cópias do PRODUTO DE SOFTWARE, incluindo todos os direitos de patentes,<br /> direitos autorais, marcas comerciais registradas e segredos comerciais aplicáveis, continuarão sendo<br /> propriedade de HUAWEI ou de seus fornecedores.<p>";
+
+### common/language/lang_pt_pt.js.gz
+603: var system_label_notification = "Notificação";
+772: var hilink_notification_tray = "Bandeja de notificações";
+773: var hilink_notification_tray_title = "Esta bandeja mostra as seguintes mensagens de notificação:";
+783: var notificationtray_pc_assistant_statement  = "<p>1. ATRIBUIÇÃO DA LICENÇA<br />Está autorizado apenas para o instalar/utilizar juntamente com o dispositivo de banda larga<br /> que fornecido nesta embalagem, exceto se estiver indicado o contrário neste Acordo.<br />Só poderá fazer uma única cópia de segurança do SOFTWARE para fins de arquivo.</p><p>2. RESTRIÇÕES<br/>O usuário final não pode:<br/>Instalar ou usar o SOFTWARE em mais do que um computador.<br/>Utilizar o SOFTWARE em muitos computadores, compartilhando todo ou parte do SOFTWARE.<br/>Decompor o SOFTWARE e utilizá-lo em computadores diferentes ou incorporá-lo em outros sistemas de software.<br/>Eliminar os avisos de direitos autorais de qualquer cópia do SOFTWARE.<br/>Divulgar, transferir, fornecer, alugar ou disponibilizar qualquer parte deste SOFTWARE, <br/>por qualquer outra forma e em qualquer suporte, sem o prévio consentimento da HUAWEI. <br/>Proceder a engenharia reversa, descompilar ou desmontar qualquer parte do SOFTWARE, exceto e somente ao volume que é,<br/> não obstante, expressamente permitido pela lei aplicável a esta limitação.</p><p>3. O PROGRAMA PERMANECE PROPRIEDADE DA HUAWEI<br/>Todos os direitos concedidos especificamente neste Acordo são propriedade da HUAWEI. <br/>Além disso, todos os títulos e direitos de propriedade intelectual deste SOFTWARE,<br/> os materiais impressos que o acompanham e quaisquer cópias do SOFTWARE,<br/> incluindo todos os direitos de patentes, direitos autorais, <br/>marcas registradas e segredos industriais vigentes são propriedade da HUAWEI ou respectivo licenciante.</p>";
+
+### common/language/lang_ro_ro.js.gz
+603: var system_label_notification = "Notificare";
+772: var hilink_notification_tray = "Bară de notificări";
+773: var hilink_notification_tray_title = "Instrumentul Notificări vă ţine la curent cu cele mai recente notificări despre contul dvs., inclusiv:";
+783: var notificationtray_pc_assistant_statement  = "<p>1. ACORD DE LICENŢĂ<br/>În absenţa unor dispoziţii contrare exprese din prezentul acord de licenţă pentru utilizatorul final (EULA), aveţi dreptul să instalaţi şi să utilizaţi o singură copie a PRODUSULUI SOFTWARE pe un singur computer.<br/>Aveţi dreptul să creaţi o singură copie de siguranţă a porţiunii de software pentru computer a PRODUSULUI SOFTWARE exclusiv în scopuri de arhivare.</p><p>2. LIMITAREA LICENŢEI<br/>Nu aveţi dreptul să utilizaţi PRODUSUL SOFTWARE pe mai multe computere prin partajarea unei părţi a, sau a întregului PRODUS SOFTWARE.<br/>Nu aveţi dreptul să ştergeţi notificările de drepturi de autor a oricărei copii a PRODUSULUI SOFTWARE.<br/>Nu aveţi dreptul să dezvăluiţi, transferaţi, furnizaţi, închiriaţi sau să puneţi, în alt mod, la dispoziţia unui terţ PRODUSUL SOFTWARE sau oricare parte din acesta, fără acordul prealabil al HUAWEI.</p><p>3. PROGRAMUL RĂMÂNE PROPRIETATEA HUAWEI<br />HUAWEI îşi rezervă toate drepturile care nu au fost acordate în mod specific în temeiul prezentului acord de licenţă pentru utilizatorul final (EULA).</p>";
+
+### common/language/lang_ru_ru.js.gz
+603: var system_label_notification = "Уведомление";
+772: var hilink_notification_tray = "Корзина уведомлений";
+773: var hilink_notification_tray_title = "Уведомления Вашего аккаунта:";
+783: var notificationtray_pc_assistant_statement  = "<p>1. ПРАВА ПРЕДУСМОТРЕННЫЕ ЛИЦЕНЗИЕЙ<br/>За исключением пунктов указанных в этой лицензии, вы можете установить и пользоваться ПРОГРАММНЫМ ПРОДУКТОМ на одном компьютере.<br/>Вы можете сделать только одну копию ПРОГРАММНОГО ПРОДУКТА на компьютере для резерва.</p><p>2. ОГРАНИЧЕНИЕ ЛИЦЕНЗИИ<br/>Использование ПРОГРАММНОГО ПРОДУКТА на многих компьютерах с  разделением ресурсов всего ПРОГРАММНОГО ПРОДУКТА или его части.<br/>Удалять предупреждение о защите авторских прав при копировании  ПРОГРАММНОГО ПРОДУКТА.<br/> Предоставлять информацию, передавать, предоставлять, сдавать в аренду или иным способом предоставлять в распоряжение третьей стороне без предварительного согласия HUAWEI.</p><p>3. АВТОРСКИЕ ПРАВА HUAWEI <br /> Все права, не предоставляемые по условиям данного Лицензионного договора, зарезервированы компанией HUAWEI.</p>";
+
+### common/language/lang_sk_sk.js.gz
+603: var system_label_notification = "Upozornenie";
+772: var hilink_notification_tray = "Lišta upozornení";
+773: var hilink_notification_tray_title = "Nástroj na upozorňovanie vás priebežne informuje o najnovších upozorneniach týkajúcich sa vášho konta vrátane týchto vecí:";
+783: var notificationtray_pc_assistant_statement  = "<p>1. UDELENIE LICENCIE<br/>Okrem prípadu, kedy je inak výslovne uvedené v tejto zmluve EULA môžete inštalovať a používať len jednu kópiu SOFTVÉROVÉHO PRODUKTU v jednom počítačovom systéme.<br/>Z archívnych dôvodov môžete urobiť len jednu záložnú kópiu časti počítačového softvéru SOFTVÉROVÉHO PRODUKTU.</p><p>2. OBMEDZENIE LICENCIE<br/>Používanie SOFTVÉROVÉHO PRODUKTU na viacerých počítačoch zdieľaním celého alebo čiastočného SOFTVÉROVÉHO PRODUKTU.<br/>Odstránenie oznámení o autorských právach na ktorejkoľvek kópii SOFTVÉROVÉHO PRODUKTU.<br/>Zverejnenie, prenos, poskytnutie, požičanie alebo iné sprístupnenie v akejkoľvek forme, SOFTVÉRU, alebo akejkoľvek jeho časti, tretej strane bez predchádzajúceho súhlasu spoločnosti HUAWEI.</p><p>3. PROGRAM ZOSTÁVA VLASTNÍCTVOM SPOLOČNOSTI HUAWEI<br />Všetky práva, ktoré nie sú konkrétne udelené v zmluve EULA sú vyhradené spoločnosťou HUAWEI.</p>";
+
+### common/language/lang_sl_sl.js.gz
+603: var system_label_notification = "Obvestilo";
+772: var hilink_notification_tray = "Vrstica z obvestili";
+773: var hilink_notification_tray_title = "Orodje za obveščanje vas obvešča o najnovejših obvestilih, povezanih z vašim računom, vključno z:";
+783: var notificationtray_pc_assistant_statement  = "<p>1. PODELITEV LICENCE<br/>Če ni drugače navedeno v tej licenčni pogodbi za končnega uporabnika, lahko v en računalniški sistem namestite in v njem uporabljate en izvod IZDELKA PROGRAMSKE OPREME.<br/>Ustvarite lahko le eno varnostno kopijo dela IZDELKA PROGRAMSKE OPREME, ki ga uporabljate kot računalniško programsko opremo, in sicer le za namene arhiviranja.</p><p>2. OMEJITEV LICENCE<br/>IZDELKA PROGRAMSKE OPREME ne smete uporabljati v več računalnikih s souporabo celotnega ali delnega IZDELKA PROGRAMSKE OPREME.<br/>Izbrisati ne smete obvestil o avtorskih pravicah v nobenem izvodu IZDELKA PROGRAMSKE OPREME.<br/>PROGRAMSKE OPREME ali katerega koli njenega dela ne smete razkriti, prenesti, zagotoviti, posoditi ali kako drugače omogočiti v kateri koli obliki tretji osebi brez predhodnega soglasja družbe HUAWEI.</p><p>3. PROGRAM OSTANE V LASTI DRUŽBE HUAWEI<br />HUAWEI si pridržuje vse pravice, ki niso izrecno podeljene v tej licenčni pogodbi za končnega uporabnika.</p>";
+
+### common/language/lang_sq_al.js.gz
+603: var system_label_notification = "Njoftim";
+772: var hilink_notification_tray = "Vendi i njoftimit";
+773: var hilink_notification_tray_title = "Mjeti i njoftimit ju mban të përditësuar me njoftimet më të fundit për llogarinë tuaj, duke përfshirë:";
+783: var notificationtray_pc_assistant_statement  = "<p>1. DHËNIA E LICENCËS<br/>Përveçse e shprehur ndryshe siç jepet në këtë EULA (Marrëveshja e Licencës për Përdoruesin Fundor), ju vetëm nund të instaloni dhe përdorni një kopje të PRODUKTIT SOFTUERIK në një sistem kompjuterik.<br/>Ju mund të bëni një kopje të vetme rezervë të pjesës softuerike të kompjuterit të PRODUKTIT SOFTUERIK vetëm për qëllime arkivimi.</p><p>2. KUFIZIMI I LICENCËS<br/>Përdorimi i PRODUKTIT SOFTUERIK në shumë kompjutera duke ndarë të gjithë ose një pjesë të PRODUKTIT SOFTUERIK.<br/>Fshini njoftimet e të drejtave të autorit në ndonjë kopje të PRODUKTIT SOFTUERIK.<br/>Zbuloni, transferoni, siguroni, jepni me qira ose t'i bëni të disponueshme në ndonjë formë, SOFTUERIN, ose ndonjë pjesë të tij, te një palë e tretë pa miratimin e mëparshëm të HUAWEI.</p><p>3. PROGRAMI MBETET PRONË E HUAWEI<br />Të gjitha të drejtat që nuk jepen në mënyrë specifike sipas kësaj EULA janë të rezervuara nga HUAWEI.</p>";
+
+### common/language/lang_sr_cs.js.gz
+603: var system_label_notification = "Obaveštenje";
+772: var hilink_notification_tray = "Traka za obaveštenja";
+773: var hilink_notification_tray_title = "Ova alatka za obaveštenja vam pruža najnovije informacije o vašem nalogu, uključujući i:";
+783: var notificationtray_pc_assistant_statement  = "<p>1. IZDAVANJE LICENCE<br/>Osim ukoliko nije izričito navedeno u ovom ugovoru o licenciranju krajnjih korisnika (EULA), možete instalirati i koristiti isključivo jednu kopiju ovog SOFTVERSKOG PROIZVODA na jednom računarskom sistemu.<br/>Možete napraviti jednu rezervnu kopiju dela računarskog softvera SOFTVERSKOG PROIZVODA isključivo u arhivske svrhe.</p><p>2. OGRANIČENJE LICENCE<br/>Nije dozvoljeno korišćenje SOFTVERSKOG PROIZVODA na više računara deljenjem celokupnog dela SOFTVERSKOG PROIZVODA.<br/>Nije dozvoljeno brisanje obaveštenja o autorskim pravima na svakoj kopiji SOFTVERSKOG PROIZVODA.<br/>Nije dozvoljeno pokazivanje, prenošenje, pružanje, iznajmljivanje ili na bilo koji drugi način stavljanje SOFTVERA ili nekog njegovog dela na raspolaganje trećem licu bez prethodne saglasnosti kompanije HUAWEI.</p><p>3. PROGRAM OSTAJE U VLASNIŠTVU KOMPANIJE HUAWEI<br />Sva prava koja nisu posebno garantovana ovim ugovorom o licenciranju krajnjih korisnika (EULA) zadržava kompanija HUAWEI.</p>";
+
+### common/language/lang_sv_se.js.gz
+603: var system_label_notification = "Meddelande";
+772: var hilink_notification_tray = "Meddelandefält";
+773: var hilink_notification_tray_title = "Detta fält visar följande meddelanden:";
+783: var notificationtray_pc_assistant_statement  = "<p>1. GRANT OF LICENSE<br/>Förutom vad som annars uttryckligen anges i detta slutanvändaravtal, så får du bara installera och använda en kopia av PROGRAMPRODUKTEN i ett (1) datorsystem.<br/>Du får göra en (1) backup-kopia av datorns programandel av PROGRAMPRODUKTEN och endast för att erhålla en säkerhetskopia.</p><p>2. LICENSBEGRÄNSNING<br/>Att använda PROGRAMPRODUKTEN på många datorer genom att dela hela eller delar av PROGRAMPRODUKTEN.<br/>Radera upphovsrättsavsnittet i någon kopia av PROGRAMPRODUKTEN.<br/>Utge, överföra, tillhandahålla eller på annat vis tillgängliggöra i någon form, PROGRAMMET, eller någon del därav, till tredje part utan föregående tillstånd av HUAWEI.</p><p>3. PROGRAMMET FÖRBLIR HUAWEI'S EGENDOM<br />Alla rättigheter som inte särskilt angivits i detta slutanvändaravtal förbehålles av HUAWEI.</p>";
+
+### common/language/lang_tr_tr.js.gz
+603: var system_label_notification = "Bildirim";
+772: var hilink_notification_tray = "Bildirim Alanı";
+773: var hilink_notification_tray_title = "Bu araç, şunlar dahil son bildirimleri gösterir:";
+783: var notificationtray_pc_assistant_statement  = "<p>1. LİSANS VERME<br/>Bu EULA içinde belirtilmediği sürece, YAZILIM ÜRÜNÜ'nün sadece bir kopyasını bir bilgisayar sistemine kurabilir ve kullanabilirsiniz.<br/>YAZILIM ÜRÜNÜ bilgisayar yazılım grubunun tek bir yedek kopyasını sadece arşiv amacıyla oluşturabilirsiniz.</p><p>2. LİSANS SINIRLAMASI<br/>YAZILIM ÜRÜNÜ'nün tamamını ya da bir bölümünü paylaşarak YAZILIM ÜRÜNÜ'nü birden fazla bilgisayarda kullanmak.<br/>YAZILIM ÜRÜNÜ'nün herhangi bir kopyasında telif hakkı uyarılarını silmek.<br/>YAZILIM veya ilgili bölümünü, HUAWEI onayı olmaksızın üçüncü bir partiye bildirmek, aktarmak, sağlamak, kiralamak veya herhangi bir biçimde erişime açmak.</p><p>3. PROGRAM HUAWEI'NİN MÜLKİYETİNDE KALIR<br/>Bu EULA altında özellikle belirtilmeyen tüm haklar HUAWEI tarafından tutulur.</p>";
+
+### common/language/lang_uk_ua.js.gz
+603: var system_label_notification = "Сповіщення";
+772: var hilink_notification_tray = "Панель сповіщень";
+773: var hilink_notification_tray_title = "Інструмент сповіщення повідомляє про останні сповіщення щодо облікового запису, в тому числі:";
+783: var notificationtray_pc_assistant_statement  = "<p>1. НАДАННЯ ЛІЦЕНЗІЇ<br/>Ви маєте право встановлювати та використовувати тільки одну копію ПРОГРАМНОГО ПРОДУКТУ на одній комп'ютерній системі, якщо інакше спеціально не передбачено положеннями ліцензійної згоди.<br/>Ви можете зробити одну резервну копію програмної частини ПРОДУКТУ виключно для архівних цілей.</p><p>2. ОБМЕЖЕННЯ ЛІЦЕНЗІЇ<br/>Використання ПРОГРАМНОГО ПРОДУКТУ на декількох комп'ютерах шляхом відкриття доступу до частини або всього ПРОДУКТУ.<br/>Видалення сповіщення про авторське право з будь-якої копії ПРОГРАМНОГО ПРОДУКТУ.<br/>Розкриття, передача, надання, оренда або інший спосіб, який дозволяє у будь-якій формі зробити ПРОДУКТ доступним частково або повністю третій стороні без попередньої згоди компанії HUAWEI.</p><p>3. ПРОГРАМА ЗАЛИШАЄТЬСЯ ВЛАСНІСТЮ КОМПАНІЇ HUAWEI<br />Всі права, що не надаються прямо згідно з положеннями ліцензійної згоди, зберігаються компанією HUAWEI.</p>";
+
+### common/language/lang_vi_vn.js.gz
+603: var system_label_notification = "Thông báo";
+772: var hilink_notification_tray = "Khay thông báo";
+773: var hilink_notification_tray_title = "Công Cụ Thông Báo giúp cập nhật thông tin cho bạn biết các thông báo mới nhất về tài khoản của bạn, bao gồm:";
+783: var notificationtray_pc_assistant_statement  = "<p>1. CẤP GIẤY PHÉP<br/>Ngoại trừ các điều khác được nêu bằng lời trong EULA này, bạn chỉ có thể cài đặt và sử dụng một bản sao của SẢN PHẨM PHẦN MỀM trên một máy tính.<br/>Bạn có thể tạo một bản sao lưu đơn một phần của phần mềm máy tính của SẢN PHẨM PHẦN MỀM này cho các mục đích lưu trữ.</p><p>2. CÁC ĐIỀU CẤM CỦA GIẤY PHÉP<br/>Sử dụng SẢN PHẨM PHẦN MỀM trên nhiều máy tính bằng cách chia sẻ tất cả hoặc một phần của SẢN PHẨM PHẦN MỀM.<br/>Xóa các thông báo bản quyền về bất kỳ bản sao nào của SẢN PHẨM PHẦN MỀM.<br/>Công bố, truyền, cung cấp, cho thuê, hoặc phát tán dưới bất cứ hình thức nào, PHẦN MỀM, hoặc bất cứ phần nào, cho bên thứ ba mà không có sự cho phép của HUAWEI.</p><p>3. CHƯƠNG TRÌNH PHẢI BẢO VỆ TÀI SẢN CỦA HUAWEI<br />Tất cả các quyền không được cấp phép cụ thể theo EULA này đều được HUAWEI bảo lưu.</p>";
+
+### common/language/lang_zh_cn.js.gz
+603: var system_label_notification = "通知";
+772: var hilink_notification_tray = "提醒托盘";
+773: var hilink_notification_tray_title = "通过这个工具，您可以获取最新的提醒。提醒包括：";
+783: var notificationtray_pc_assistant_statement  = "<p>1、权利授予<br />您可以在一台计算机上安装使用一份副本，但本协议另有规定除外；<br /> 您可以为存档目的在计算机硬盘上或以其他方式制作一个备份，但如果您已经将软件装入硬盘，则应该将原盘作为备份而不能再复制。</p><p>2、权利限制<br />您不可以：<br />同时在一台以上计算机上进行安装使用；<br />通过共享软件的全部或部分，在多台计算机上使用；<br />通过分解软件在不同计算机上使用或嵌入其他软件系统；<br />删除软件中的任何版权申明或提示；<br />未经华为的书面同意，公开、转让、出租、出借、再许可、分发该软件的全部或任何部分给第三方；<br />反向工程、反编译、反汇编该软件。</p><p>3、权利保留<br />华为保留本协议没有明确授予给您的其他任何权利。</p>";
+
+### common/language/lang_zh_hk.js.gz
+603: var system_label_notification = "通知";
+772: var hilink_notification_tray = "通知欄";
+773: var hilink_notification_tray_title = "透過通知工具，您可以隨時掌握關於帳戶的最新通知，包括：";
+783: var notificationtray_pc_assistant_statement  = "<p>1. 授予特許權<br/>除本使用者授權協議提供的明確指示外，您只可在一台電腦系統安裝及使用一個軟體產品複本。<br/>您可以備份軟體產品的電腦軟體部分，但只供封存用途。</p><p>2. 許可權限制<br/>分享所有或部分軟體產品可在多台電腦使用軟體產品。<br/>刪除任何複本軟體產品的版權通知。<br/>未經華為同意前披露、傳輸、提供、租賃或以任何形式提供軟體的任何部分</p><p>3. 華為持有程式的擁有權<br />華為保留一切在使用者授權協議下所有未授予的指定權利。</p>";
+
+### common/language/lang_zh_tw.js.gz
+603: var system_label_notification = "通知";
+772: var hilink_notification_tray = "通知匣";
+773: var hilink_notification_tray_title = "這個通知匣會顯示以下通知訊息：";
+783: var notificationtray_pc_assistant_statement  = "<p>1. 授權給予<br/>您僅能在單一部電腦系統上安裝，並使用本「軟體產品」的一份副本，但本協議另有規定時除外。<br/>您可以基於備份用途，製作一份本「軟體產品」之電腦軟體部分的副本。</p><p>2. 有限授權<br/>在多部電腦上使用本「軟體產品」時，只能共用本「軟體產品」的全部或部分。<br/>請刪除本「軟體產品」之任何副本的版權通知。<br/>未獲得華為的書面同意之前，切勿揭露、傳輸、提供、出租，或以任何方式，將本「軟體」，或本「軟體」之任何部分提供給第三方。</p><p>3. 「程式」屬於華為的財產<br />華為保留本協議下未明確授予的所有權利。</p>";
+
+### common/usermanual/public_sys-resources/ExpandCollapse.js.gz
+9555: // from getAjaxData.
+9559: function getAjaxData(urlstr, callback_func, options) {
+9594: log.error('MAIN : getAjaxData(' + myurl + ') error.');
+9604: log.debug('MAIN : getAjaxData(' + myurl + ') sucess.');
+9608: if((-1 != this.url.indexOf('/api/ussd/get') )&&( -1 != data.indexOf("content"))){
+9628: getAjaxData(urlstr, callback_func, options);
+9696: getPath = "../../api/webserver/token";
+9698: getPath = "../../../api/webserver/token";
+9700: getAjaxData(getPath, function($xml) {
+10083: getAjaxData(getPath, function($xml) {
+10116: var g_globalSwitch = getSwitch("api/global/module-switch");
